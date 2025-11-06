@@ -1,0 +1,1340 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="css/tailwindcss.css" rel="stylesheet" />
+  <link href="css/login.css" rel="stylesheet" />
+  <link href="css/style.css" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
+<body>
+  <script data-savepage-type="" type="text/plain" data-template-id="country-code"></script>
+  <script data-savepage-type="module" type="text/plain"></script>
+  <div id="container">
+    
+  <!-- Simple toast -->
+  <div id="toast" class="fixed bottom-6 right-6 hidden px-4 py-3 bg-black text-white rounded-xl text-sm shadow-lg">
+  </div>
+    <div class="tailwind css-myl2ny css-exq74d css-gs60ek">
+      <div class="min-h-screen bg-[#F7F9FB]" style="font-family: Inter, system-ui, sans-serif;">
+        <header class="bg-[#F7F9FB] sticky top-0 z-100" style="box-shadow: rgba(0, 0, 0, 0.06) 0px 4px 20px;">
+          <div class="max-w-[1800px] mx-auto px-8 py-4">
+            <div class="flex items-center justify-between gap-8">
+              <div class="flex items-center gap-3 flex-shrink-0">
+                <div class="w-11 h-11 rounded-xl flex items-center justify-center"
+                  style="background: linear-gradient(135deg, rgb(27, 125, 203) 0%, rgb(56, 182, 255) 100%); box-shadow: rgba(27, 125, 203, 0.3) 4px 4px 12px, rgba(255, 255, 255, 0.5) -2px -2px 8px;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-file-text w-6 h-6 text-white" aria-hidden="true">
+                    <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path>
+                    <path d="M14 2v4a2 2 0 0 0 2 2h4"></path>
+                    <path d="M10 9H8"></path>
+                    <path d="M16 13H8"></path>
+                    <path d="M16 17H8"></path>
+                  </svg>
+                </div>
+                <div>
+                  <div class="text-sm text-gray-500">Research Integrity AI</div>
+                  <h1 class="text-gray-900"
+                    style="font-family: &quot;Playfair Display&quot;, serif; font-size: 1.25rem; line-height: 1.2;">
+                    Author Dashboard
+                  </h1>
+                </div>
+              </div>
+              <div class="flex-1 max-w-xl">
+                <div class="bg-[#F7F9FB] rounded-2xl px-4 py-2.5 w-full flex items-center gap-3"
+                  style="box-shadow: rgba(0, 0, 0, 0.08) 4px 4px 10px inset, rgba(255, 255, 255, 0.9) -4px -4px 10px inset;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-search w-4 h-4 text-gray-400" aria-hidden="true">
+                    <path d="m21 21-4.34-4.34"></path>
+                    <circle cx="11" cy="11" r="8"></circle>
+                  </svg>
+                  <input type="text" placeholder="Search manuscripts..."
+                    class="bg-transparent outline-none text-sm text-gray-700 placeholder-gray-400 w-full" value="">
+                </div>
+              </div>
+              <div class="flex items-center gap-4 flex-shrink-0">
+                <div class="relative" x-data="{ open: false }">
+                  <button @click="open = !open"
+                    class="flex items-center gap-2 bg-[#F7F9FB] rounded-xl px-4 py-2 transition-all hover:translate-y-[-2px]"
+                    style="box-shadow: rgba(0, 0, 0, 0.08) 5px 5px 12px, rgba(255, 255, 255, 0.9) -5px -5px 12px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                      class="lucide lucide-user w-5 h-5 text-gray-600" aria-hidden="true">
+                      <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                      <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                    <span class="text-sm text-gray-700">Rebin</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                      class="lucide lucide-chevron-down w-4 h-4 text-gray-500" aria-hidden="true">
+                      <path d="m6 9 6 6 6-6"></path>
+                    </svg>
+                  </button>
+                  <!-- Dropdown -->
+                  <div x-show="open" @click.outside="open = false" x-transition
+                    class="absolute right-0 mt-2 w-44 bg-white border border-gray-100 rounded-xl shadow-lg overflow-hidden z-50">
+
+                    <a href="#"
+                      class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#1B7DCB]">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-settings w-4 h-4">
+                        <path
+                          d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z">
+                        </path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                      </svg>&nbsp;Settings
+                    </a>
+                    <a href="login.html"
+                      class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-red-500">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-log-out w-4 h-4">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                        <polyline points="16 17 21 12 16 7"></polyline>
+                        <line x1="21" x2="9" y1="12" y2="12"></line>
+                      </svg>&nbsp;Logout
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </header>
+        <main class="max-w-[1800px] mx-auto px-6 py-6">
+          <div class="flex gap-6 items-start">
+            <div class="flex-1 min-w-0 space-y-6">
+              <div class="bg-[#F7F9FB] rounded-3xl p-10 relative overflow-hidden"
+                style="box-shadow: rgba(0, 0, 0, 0.1) 12px 12px 28px, rgba(255, 255, 255, 0.9) -12px -12px 28px;">
+                <div class="absolute inset-0 opacity-[0.08] pointer-events-none"
+                  style="background: radial-gradient(circle at 10% 20%, rgb(27, 125, 203), transparent 50%), radial-gradient(circle at 90% 80%, rgb(56, 182, 255), transparent 50%);">
+                </div>
+                <div x-data="{ open: false }" class="relative z-10 flex items-center justify-between">
+                  <div class="flex-1">
+                    <h2 class="text-gray-900 text-xl mb-2 flex items-center gap-2">Welcome back,
+                      Rebin<span>👋</span></h2>
+                    <p class="text-gray-600 mb-6">Track and manage your manuscript submissions seamlessly.</p>
+                  </div>
+                  <button @click="open = true"
+                    class="flex items-center gap-3 text-white rounded-2xl px-8 py-4 transition-all hover:translate-y-[-2px] flex-shrink-0"
+                    style="background: linear-gradient(135deg, rgb(27, 125, 203) 0%, rgb(56, 182, 255) 100%); box-shadow: rgba(27, 125, 203, 0.35) 8px 8px 24px, rgba(255, 255, 255, 0.5) -3px -3px 12px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                      class="lucide lucide-upload w-5 h-5" aria-hidden="true">
+                      <path d="M12 3v12"></path>
+                      <path d="m17 8-5-5-5 5"></path>
+                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    </svg>
+                    <span>Upload Manuscript</span>
+                  </button>
+                  <div x-show="open" class="fixed inset-0 z-50 flex items-center justify-center p-4" x-transition>
+                    <!-- Dark Overlay -->
+                    <div @click="open = false" class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+
+                    <!-- Popup Container -->
+                    <div class="relative w-full max-w-3xl max-h-[90vh] overflow-hidden rounded-3xl bg-[#F7F9FB]"
+                      style="box-shadow: rgba(0, 0, 0, 0.2) 0px 24px 60px, rgba(255, 255, 255, 0.5) 0px 0px 1px; opacity: 1; transform: none;">
+                      <!-- ===== Header ===== -->
+                      <div class="relative overflow-hidden border-b border-gray-200 px-8 py-6"
+                        style="background: linear-gradient(135deg, rgba(27, 125, 203, 0.05) 0%, rgba(56, 182, 255, 0.05) 100%);">
+                        <div class="flex items-center justify-between">
+                          <div>
+                            <h2 class="text-gray-900"
+                              style="font-family: 'Playfair Display', serif; font-size: 28px; line-height: 1.2;">
+                              Upload Manuscript
+                            </h2>
+                            <p class="mt-1 text-sm text-gray-600" style="font-family: Inter, sans-serif;">
+                              Submit your research for AI-powered integrity analysis
+                            </p>
+                          </div>
+
+                          <!-- Close Button -->
+                          <button @click="open = false"
+                            class="flex h-10 w-10 items-center justify-center rounded-xl bg-[#F7F9FB] transition-all hover:bg-gray-200"
+                            style="box-shadow: rgba(0, 0, 0, 0.08) 4px 4px 8px, rgba(255, 255, 255, 0.9) -4px -4px 8px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-600" fill="none"
+                              viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round">
+                              <path d="M18 6 6 18M6 6l12 12" />
+                            </svg>
+                          </button>
+                        </div>
+                        <div class="mt-8 flex items-center justify-between">
+                          <div class="flex flex-1 items-center">
+                            <div class="flex items-center gap-3" id="step1Indicator">
+                              <div
+                                class="flex h-10 w-10 items-center justify-center rounded-xl transition-all scale-110"
+                                style="background: linear-gradient(135deg, rgb(27, 125, 203) 0%, rgb(56, 182, 255) 100%); box-shadow: rgba(27, 125, 203, 0.4) 0px 4px 12px;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                  stroke-linejoin="round" class="lucide lucide-upload h-5 w-5 text-white">
+                                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                  <polyline points="17 8 12 3 7 8"></polyline>
+                                  <line x1="12" x2="12" y1="3" y2="15"></line>
+                                </svg>
+                              </div>
+                              <div>
+                                <div class="text-xs text-gray-900"
+                                  style="font-family: Inter, sans-serif; font-weight: 600;">Upload File</div>
+                              </div>
+                            </div>
+                            <div class="mx-4 h-px flex-1"
+                              style="background: linear-gradient(to right, rgb(229, 231, 235), rgb(229, 231, 235));">
+                            </div>
+                          </div>
+                          <div class="flex flex-1 items-center">
+                            <div class="flex items-center gap-3" id="step2Indicator">
+                              <div class="flex h-10 w-10 items-center justify-center rounded-xl transition-all "
+                                style="background: rgb(229, 231, 235); box-shadow: rgba(0, 0, 0, 0.1) 2px 2px 4px inset;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                  stroke-linejoin="round" class="lucide lucide-file-text h-5 w-5 text-gray-400">
+                                  <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path>
+                                  <path d="M14 2v4a2 2 0 0 0 2 2h4"></path>
+                                  <path d="M10 9H8"></path>
+                                  <path d="M16 13H8"></path>
+                                  <path d="M16 17H8"></path>
+                                </svg>
+                              </div>
+                              <div>
+                                <div class="text-xs text-gray-400"
+                                  style="font-family: Inter, sans-serif; font-weight: 500;">Manuscript Details</div>
+                              </div>
+                            </div>
+                            <div class="mx-4 h-px flex-1"
+                              style="background: linear-gradient(to right, rgb(229, 231, 235), rgb(229, 231, 235));">
+                            </div>
+                          </div>
+                          <div class="flex flex-1 items-center">
+                            <div class="flex items-center gap-3" id="step3Indicator">
+                              <div class="flex h-10 w-10 items-center justify-center rounded-xl transition-all "
+                                style="background: rgb(229, 231, 235); box-shadow: rgba(0, 0, 0, 0.1) 2px 2px 4px inset;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                  stroke-linejoin="round" class="lucide lucide-circle-check-big h-5 w-5 text-gray-400">
+                                  <path d="M21.801 10A10 10 0 1 1 17 3.335"></path>
+                                  <path d="m9 11 3 3L22 4"></path>
+                                </svg>
+                              </div>
+                              <div>
+                                <div class="text-xs text-gray-400"
+                                  style="font-family: Inter, sans-serif; font-weight: 500;">Review &amp; Submit</div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- ===== Content Area ===== -->
+                      <div class="overflow-y-auto px-8 py-6" style="max-height: calc(-280px + 90vh);">
+                        <!-- Step 1 -->
+                        <div id="step1" class="fade-enter-active">
+                          <div id="dropZone"
+                            class="border-2 border-dashed border-gray-300 rounded-3xl p-12 text-center bg-white transition-all">
+                            <div id="uploadPlaceholder">
+                              <div
+                                class="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-2xl bg-blue-50">
+                                📄
+                              </div>
+                              <h3 class="mb-2 text-gray-900 text-lg font-semibold">Drag & Drop Your Manuscript</h3>
+                              <p class="mb-6 text-sm text-gray-600">or click to browse files</p>
+                              <input type="file" id="fileUpload" class="hidden" accept=".pdf,.docx" />
+                              <label for="fileUpload"
+                                class="cursor-pointer inline-block bg-blue-600 text-white rounded-2xl px-6 py-3 font-semibold hover:bg-blue-700">Browse
+                                Files</label>
+                              <p class="mt-4 text-xs text-gray-500">Supported formats: PDF, DOCX (Max 50MB)</p>
+                            </div>
+                            <div id="uploadedFileInfo" class="hidden">
+                              <div
+                                class="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-2xl bg-green-50 text-green-600 text-3xl">
+                                ✔</div>
+                              <h3 id="fileName" class="mb-2 text-gray-900 font-semibold"></h3>
+                              <p id="fileSize" class="mb-4 text-sm text-gray-600"></p>
+                              <button id="removeFileBtn"
+                                class="text-sm text-red-600 hover:text-red-700 font-medium">Remove File</button>
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div id="step2" class="hidden">
+                          <div class="space-y-6">
+                            <div>
+                              <label class="block mb-2 text-sm font-semibold">Manuscript Title <span
+                                  class="text-red-500">*</span></label>
+                              <input id="title" type="text"
+                                class="h-12 w-full rounded-2xl border border-gray-200 bg-white px-4 text-gray-900 outline-none transition-all placeholder:text-gray-400 focus:border-[#1B7DCB] focus:shadow-[0_0_0_3px_rgba(27,125,203,0.1)]"
+                                placeholder="Enter title" style="" />
+                            </div>
+                            <div>
+                              <label class="block mb-2 text-sm font-semibold">Authors <span
+                                  class="text-red-500">*</span></label>
+                              <input id="authors" type="text"
+                                class="h-12 w-full rounded-2xl border border-gray-200 bg-white px-4 text-gray-900 outline-none transition-all placeholder:text-gray-400 focus:border-[#1B7DCB] focus:shadow-[0_0_0_3px_rgba(27,125,203,0.1)]"
+                                placeholder="e.g., John Doe, Jane Smith" />
+                            </div>
+                            <div class="grid grid-cols-2 gap-4">
+                              <div>
+                                <label class="block mb-2 text-sm font-semibold">Research Field</label>
+                                <select id="researchField"
+                                  class="h-12 w-full rounded-2xl border border-gray-200 bg-white px-4 text-gray-900 outline-none transition-all focus:border-[#1B7DCB] focus:shadow-[0_0_0_3px_rgba(27,125,203,0.1)]">
+                                  <option value="">Select field</option>
+                                  <option>Medicine</option>
+                                  <option>Biology</option>
+                                  <option>Engineering</option>
+                                  <option>Physics</option>
+                                  <option>Chemistry</option>
+                                  <option>Computer Science</option>
+                                  <option>Social Sciences</option>
+                                  <option>Other</option>
+                                </select>
+                              </div>
+                              <div>
+                                <label class="block mb-2 text-sm font-semibold">Article Type</label>
+                                <select id="category"
+                                  class="h-12 w-full rounded-2xl border border-gray-200 bg-white px-4 text-gray-900 outline-none transition-all focus:border-[#1B7DCB] focus:shadow-[0_0_0_3px_rgba(27,125,203,0.1)]">
+                                  <option value="">Select type</option>
+                                  <option>Research Article</option>
+                                  <option>Review</option>
+                                  <option>Case Study</option>
+                                  <option>Short Communication</option>
+                                  <option>Letter</option>
+                                </select>
+                              </div>
+                            </div>
+                            <div>
+                              <label class="block mb-2 text-sm font-semibold">Abstract</label>
+                              <textarea id="abstract" rows="4"
+                                class="w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 text-gray-900 outline-none transition-all placeholder:text-gray-400 focus:border-[#1B7DCB] focus:shadow-[0_0_0_3px_rgba(27,125,203,0.1)]"
+                                placeholder="Brief summary (150–250 words)"></textarea>
+                            </div>
+                            <div>
+                              <label class="block mb-2 text-sm font-semibold">Keywords</label>
+                              <input id="keywords" type="text"
+                                class="h-12 w-full rounded-2xl border border-gray-200 bg-white px-4 text-gray-900 outline-none transition-all focus:border-[#1B7DCB] focus:shadow-[0_0_0_3px_rgba(27,125,203,0.1)]"
+                                placeholder="e.g., AI, medicine, deep learning" />
+                              <p class="mt-1 text-xs text-gray-500">Separate keywords with commas</p>
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div id="step3" class="hidden">
+                          <div class="bg-blue-50/50 border border-blue-100 rounded-2xl p-6 mb-6">
+                            <h3 class="text-lg font-semibold mb-3">Review Your Submission</h3>
+                            <p><strong>File:</strong> <span id="reviewFile"></span></p>
+                            <p><strong>Title:</strong> <span id="reviewTitle"></span></p>
+                            <p><strong>Authors:</strong> <span id="reviewAuthors"></span></p>
+                            <p><strong>Keywords:</strong> <span id="reviewKeywords"></span></p>
+                          </div>
+                          <div class="rounded-2xl bg-gradient-to-br from-green-50 to-blue-50 p-6"
+                            style="border: 1px solid rgba(16, 185, 129, 0.2);">
+                            <h4 class="mb-3 flex items-center gap-2 text-gray-900"
+                              style="font-family: Inter, sans-serif; font-size: 16px; font-weight: 600;"><svg
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="lucide lucide-circle-check-big h-5 w-5 text-green-600">
+                                <path d="M21.801 10A10 10 0 1 1 17 3.335"></path>
+                                <path d="m9 11 3 3L22 4"></path>
+                              </svg>What Happens Next?</h4>
+                            <ul class="space-y-2 text-sm text-gray-700" style="font-family: Inter, sans-serif;">
+                              <li class="flex items-start gap-2"><span
+                                  class="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-green-600"></span><span>AI-powered
+                                  plagiarism detection will scan your manuscript</span></li>
+                              <li class="flex items-start gap-2"><span
+                                  class="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-green-600"></span><span>Metadata
+                                  and formatting will be validated</span></li>
+                              <li class="flex items-start gap-2"><span
+                                  class="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-green-600"></span><span>Author
+                                  verification and contribution checks will run</span></li>
+                              <li class="flex items-start gap-2"><span
+                                  class="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-green-600"></span><span>You'll
+                                  receive a comprehensive integrity report within 24 hours</span></li>
+                            </ul>
+                          </div>
+                        </div>
+
+                      </div>
+
+                      <!-- ===== Footer ===== -->
+                      <div class="flex items-center justify-between border-t border-gray-200 px-8 py-6"
+                        style="background: linear-gradient(135deg, rgba(27, 125, 203, 0.02) 0%, rgba(56, 182, 255, 0.02) 100%);">
+                        <button disabled id="backBtn"
+                          class="flex items-center gap-2 rounded-xl px-6 py-3 transition-all disabled:opacity-30 disabled:cursor-not-allowed"
+                          style="font-family: Inter, sans-serif; font-weight: 600; color: rgb(27, 125, 203); box-shadow: rgba(0, 0, 0, 0.06) 4px 4px 10px, rgba(255, 255, 255, 0.9) -4px -4px 10px;">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor" stroke-width="2">
+                            <path d="M15 18l-6-6 6-6"></path>
+                          </svg>
+                          Back
+                        </button>
+
+                        <div class="flex items-center gap-3">
+                          <button id="cancelBtn" @click="open = false"
+                            class="rounded-xl px-6 py-3 transition-all hover:bg-gray-100"
+                            style="font-family: Inter, sans-serif; font-weight: 600; color: rgb(107, 114, 128);">
+                            Cancel
+                          </button>
+                          <button id="nextBtn"
+                            class="flex items-center gap-2 rounded-2xl px-8 py-3 text-white transition-all hover:translate-y-[-2px]"
+                            style="background: linear-gradient(135deg, rgb(27, 125, 203) 0%, rgb(56, 182, 255) 100%); box-shadow: rgba(27, 125, 203, 0.3) 0px 4px 12px; font-family: Inter, sans-serif; font-weight: 600;">
+                            Next
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                              stroke="currentColor" stroke-width="2">
+                              <path d="M9 18l6-6-6-6"></path>
+                            </svg>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-[#F7F9FB] rounded-3xl p-6"
+                  style="box-shadow: rgba(0, 0, 0, 0.09) 8px 8px 20px, rgba(255, 255, 255, 0.9) -8px -8px 20px;">
+                  <div class="flex items-center justify-between">
+                    <div>
+                      <div class="text-sm text-gray-500 mb-2">Total Manuscripts</div>
+                      <div class="text-3xl text-gray-900">12</div>
+                    </div>
+                    <div class="w-14 h-14 rounded-2xl flex items-center justify-center"
+                      style="background: rgba(27, 125, 203, 0.082); box-shadow: rgba(0, 0, 0, 0.08) 3px 3px 7px inset, rgba(255, 255, 255, 0.6) -3px -3px 7px inset;">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-file-text w-7 h-7" aria-hidden="true" style="color: rgb(27, 125, 203);">
+                        <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path>
+                        <path d="M14 2v4a2 2 0 0 0 2 2h4"></path>
+                        <path d="M10 9H8"></path>
+                        <path d="M16 13H8"></path>
+                        <path d="M16 17H8"></path>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <div class="bg-[#F7F9FB] rounded-3xl p-6"
+                  style="box-shadow: rgba(0, 0, 0, 0.09) 8px 8px 20px, rgba(255, 255, 255, 0.9) -8px -8px 20px;">
+                  <div class="flex items-center justify-between">
+                    <div>
+                      <div class="text-sm text-gray-500 mb-2">Approval Rate</div>
+                      <div class="text-3xl text-gray-900">87%</div>
+                    </div>
+                    <div class="w-14 h-14 rounded-2xl flex items-center justify-center"
+                      style="background: rgba(16, 185, 129, 0.082); box-shadow: rgba(0, 0, 0, 0.08) 3px 3px 7px inset, rgba(255, 255, 255, 0.6) -3px -3px 7px inset;">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-trending-up w-7 h-7" aria-hidden="true" style="color: rgb(16, 185, 129);">
+                        <path d="M16 7h6v6"></path>
+                        <path d="m22 7-8.5 8.5-5-5L2 17"></path>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <div class="bg-[#F7F9FB] rounded-3xl p-6"
+                  style="box-shadow: rgba(0, 0, 0, 0.09) 8px 8px 20px, rgba(255, 255, 255, 0.9) -8px -8px 20px;">
+                  <div class="flex items-center justify-between">
+                    <div>
+                      <div class="text-sm text-gray-500 mb-2">Upcoming Deadlines</div>
+                      <div class="text-3xl text-gray-900">3</div>
+                    </div>
+                    <div class="w-14 h-14 rounded-2xl flex items-center justify-center"
+                      style="background: rgba(245, 158, 11, 0.082); box-shadow: rgba(0, 0, 0, 0.08) 3px 3px 7px inset, rgba(255, 255, 255, 0.6) -3px -3px 7px inset;">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-clock w-7 h-7" aria-hidden="true" style="color: rgb(245, 158, 11);">
+                        <path d="M12 6v6l4 2"></path>
+                        <circle cx="12" cy="12" r="10"></circle>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <div class="bg-[#F7F9FB] rounded-3xl p-6"
+                  style="box-shadow: rgba(0, 0, 0, 0.09) 8px 8px 20px, rgba(255, 255, 255, 0.9) -8px -8px 20px;">
+                  <div class="flex items-center justify-between">
+                    <div>
+                      <div class="text-sm text-gray-500 mb-2">Active Reviews</div>
+                      <div class="text-3xl text-gray-900">5</div>
+                    </div>
+                    <div class="w-14 h-14 rounded-2xl flex items-center justify-center"
+                      style="background: rgba(139, 92, 246, 0.082); box-shadow: rgba(0, 0, 0, 0.08) 3px 3px 7px inset, rgba(255, 255, 255, 0.6) -3px -3px 7px inset;">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-activity w-7 h-7" aria-hidden="true" style="color: rgb(139, 92, 246);">
+                        <path
+                          d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2">
+                        </path>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-[#F7F9FB] rounded-3xl p-6"
+                style="box-shadow: rgba(0, 0, 0, 0.1) 12px 12px 28px, rgba(255, 255, 255, 0.9) -12px -12px 28px;">
+                <div class="flex items-center gap-3 mb-4">
+                  <div class="w-10 h-10 rounded-xl flex items-center justify-center"
+                    style="background: rgba(27, 125, 203, 0.12); box-shadow: rgba(0, 0, 0, 0.08) 2px 2px 5px inset;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                      class="lucide lucide-funnel w-5 h-5 text-[#1B7DCB]" aria-hidden="true">
+                      <path
+                        d="M10 20a1 1 0 0 0 .553.895l2 1A1 1 0 0 0 14 21v-7a2 2 0 0 1 .517-1.341L21.74 4.67A1 1 0 0 0 21 3H3a1 1 0 0 0-.742 1.67l7.225 7.989A2 2 0 0 1 10 14z">
+                      </path>
+                    </svg>
+                  </div>
+                  <h3 class="text-gray-900">Quick Filters</h3>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                  <div>
+                    <label class="text-xs text-gray-600 mb-2 block">Issue Type</label>
+                    <select
+                      class="border-input data-[placeholder]:text-muted-foreground [&_svg:not([class*='text-'])]:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:bg-input/30 dark:hover:bg-input/50 flex w-full items-center justify-between gap-2 rounded-md border px-3 py-2 text-sm whitespace-nowrap transition-[color,box-shadow] outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50 data-[size=default]:h-9 data-[size=sm]:h-8 *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-2 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 bg-[#F7F9FB] border-none text-gray-900"
+                      style="box-shadow: rgba(0, 0, 0, 0.08) 3px 3px 8px inset, rgba(255, 255, 255, 0.9) -3px -3px 8px inset;">
+                      <option value="">All Types</option>
+                      <option>Review Article</option>
+                      <option>Case Study</option>
+                      <option>Research Paper</option>
+                      <option>Editorial</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label class="text-xs text-gray-600 mb-2 block">Manuscript Stage</label>
+                    <select
+                      class="border-input data-[placeholder]:text-muted-foreground [&_svg:not([class*='text-'])]:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:bg-input/30 dark:hover:bg-input/50 flex w-full items-center justify-between gap-2 rounded-md border px-3 py-2 text-sm whitespace-nowrap transition-[color,box-shadow] outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50 data-[size=default]:h-9 data-[size=sm]:h-8 *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-2 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 bg-[#F7F9FB] border-none text-gray-900"
+                      style="box-shadow: rgba(0, 0, 0, 0.08) 3px 3px 8px inset, rgba(255, 255, 255, 0.9) -3px -3px 8px inset;">
+                      <option value="">All Stages</option>
+                      <option>Submitted</option>
+                      <option>In Review</option>
+                      <option>Accepted</option>
+                      <option>Rejected</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label class="text-xs text-gray-600 mb-2 block">Category</label>
+                    <select
+                      class="border-input data-[placeholder]:text-muted-foreground [&_svg:not([class*='text-'])]:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:bg-input/30 dark:hover:bg-input/50 flex w-full items-center justify-between gap-2 rounded-md border px-3 py-2 text-sm whitespace-nowrap transition-[color,box-shadow] outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50 data-[size=default]:h-9 data-[size=sm]:h-8 *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-2 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 bg-[#F7F9FB] border-none text-gray-900"
+                      style="box-shadow: rgba(0, 0, 0, 0.08) 3px 3px 8px inset, rgba(255, 255, 255, 0.9) -3px -3px 8px inset;">
+                      <option value="">All Category</option>
+                      <option>Research</option>
+                      <option>Review</option>
+                      <option>Editorial</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label class="text-xs text-gray-600 mb-2 block">Date Range</label>
+                    <select
+                      class="border-input data-[placeholder]:text-muted-foreground [&_svg:not([class*='text-'])]:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:bg-input/30 dark:hover:bg-input/50 flex w-full items-center justify-between gap-2 rounded-md border px-3 py-2 text-sm whitespace-nowrap transition-[color,box-shadow] outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50 data-[size=default]:h-9 data-[size=sm]:h-8 *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-2 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 bg-[#F7F9FB] border-none text-gray-900"
+                      style="box-shadow: rgba(0, 0, 0, 0.08) 3px 3px 8px inset, rgba(255, 255, 255, 0.9) -3px -3px 8px inset;">
+                      <option value="">All Time</option>
+                      <option>Today</option>
+                      <option>This Week</option>
+                      <option>This Month</option>
+                      <option>This Quarter</option>
+                      <option>This Year</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-[#F7F9FB] rounded-3xl p-6"
+                style="box-shadow: rgba(0, 0, 0, 0.1) 12px 12px 28px, rgba(255, 255, 255, 0.9) -12px -12px 28px;">
+                <div class="flex items-center justify-between mb-6">
+                  <h3 class="text-gray-900">Submitted Manuscripts</h3>
+                  <span class="text-sm text-gray-500">5 total
+                    submissions</span>
+                </div>
+                <div class="space-y-3">
+                  <div class="bg-[#F7F9FB] rounded-2xl p-5 transition-all hover:translate-x-1"
+                    style="box-shadow: rgba(0, 0, 0, 0.07) 4px 4px 10px inset, rgba(255, 255, 255, 0.9) -4px -4px 10px inset;">
+                    <div class="flex items-center justify-between gap-4">
+                      <div class="flex-1 min-w-0">
+                        <h4 class="text-gray-900 mb-2 truncate">Novel Therapeutic Approaches in Treatment-Resistant
+                          Depression
+                        </h4>
+                        <div class="flex items-center gap-3 flex-wrap">
+                          <span class="text-xs text-gray-500">Jan 15,
+                            2025</span><span class="text-xs text-gray-400">•</span><span
+                            class="text-xs text-gray-600">Research Paper</span>
+                          <div class="px-3 py-1 rounded-lg text-xs"
+                            style="background: rgba(27, 125, 203, 0.12); color: rgb(27, 125, 203); box-shadow: rgba(0, 0, 0, 0.05) 1px 1px 3px inset;">
+                            In Review
+                          </div>
+                          <div class="px-3 py-1 rounded-lg text-xs"
+                            style="background: rgba(245, 158, 11, 0.12); color: rgb(245, 158, 11); box-shadow: rgba(0, 0, 0, 0.05) 1px 1px 3px inset;">
+                            Processing
+                          </div>
+                        </div>
+                      </div>
+                      <div class="flex items-center gap-2 flex-shrink-0">
+                        <a href="view_details.html"
+                          class="flex items-center gap-2 bg-[#F7F9FB] rounded-xl px-4 py-2 text-sm text-gray-700 hover:text-[#1B7DCB] transition-all"
+                          style="box-shadow: rgba(0, 0, 0, 0.08) 4px 4px 10px, rgba(255, 255, 255, 0.9) -4px -4px 10px;">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-eye w-4 h-4" aria-hidden="true">
+                            <path
+                              d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0">
+                            </path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                          </svg>
+                          <span>View Details</span>
+                        </a>
+                        <a href="view_details.html"
+                          class="w-10 h-10 rounded-xl bg-[#F7F9FB] flex items-center justify-center text-gray-600 hover:text-[#1B7DCB] transition-all"
+                          title="Edit"
+                          style="box-shadow: rgba(0, 0, 0, 0.08) 4px 4px 10px, rgba(255, 255, 255, 0.9) -4px -4px 10px;">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-square-pen w-4 h-4" aria-hidden="true">
+                            <path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                            <path
+                              d="M18.375 2.625a1 1 0 0 1 3 3l-9.013 9.014a2 2 0 0 1-.853.505l-2.873.84a.5.5 0 0 1-.62-.62l.84-2.873a2 2 0 0 1 .506-.852z">
+                            </path>
+                          </svg>
+                        </a>
+                        <a href="view_details.html"
+                          class="w-10 h-10 rounded-xl bg-[#F7F9FB] flex items-center justify-center text-gray-600 hover:text-[#EF4444] transition-all"
+                          title="Withdraw"
+                          style="box-shadow: rgba(0, 0, 0, 0.08) 4px 4px 10px, rgba(255, 255, 255, 0.9) -4px -4px 10px;">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-trash2 lucide-trash-2 w-4 h-4" aria-hidden="true">
+                            <path d="M10 11v6"></path>
+                            <path d="M14 11v6"></path>
+                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path>
+                            <path d="M3 6h18"></path>
+                            <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                          </svg>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="bg-[#F7F9FB] rounded-2xl p-5 transition-all hover:translate-x-1"
+                    style="box-shadow: rgba(0, 0, 0, 0.07) 4px 4px 10px inset, rgba(255, 255, 255, 0.9) -4px -4px 10px inset;">
+                    <div class="flex items-center justify-between gap-4">
+                      <div class="flex-1 min-w-0">
+                        <h4 class="text-gray-900 mb-2 truncate">Machine Learning Applications in Cancer Detection
+                        </h4>
+                        <div class="flex items-center gap-3 flex-wrap">
+                          <span class="text-xs text-gray-500">Jan 12,
+                            2025</span><span class="text-xs text-gray-400">•</span><span
+                            class="text-xs text-gray-600">Review Article</span>
+                          <div class="px-3 py-1 rounded-lg text-xs"
+                            style="background: rgba(16, 185, 129, 0.12); color: rgb(16, 185, 129); box-shadow: rgba(0, 0, 0, 0.05) 1px 1px 3px inset;">
+                            Accepted
+                          </div>
+                          <div class="px-3 py-1 rounded-lg text-xs"
+                            style="background: rgba(16, 185, 129, 0.12); color: rgb(16, 185, 129); box-shadow: rgba(0, 0, 0, 0.05) 1px 1px 3px inset;">
+                            Accepted
+                          </div>
+                        </div>
+                      </div>
+                      <div class="flex items-center gap-2 flex-shrink-0">
+                        <a href="view_details.html"
+                          class="flex items-center gap-2 bg-[#F7F9FB] rounded-xl px-4 py-2 text-sm text-gray-700 hover:text-[#1B7DCB] transition-all"
+                          style="box-shadow: rgba(0, 0, 0, 0.08) 4px 4px 10px, rgba(255, 255, 255, 0.9) -4px -4px 10px;">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-eye w-4 h-4" aria-hidden="true">
+                            <path
+                              d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0">
+                            </path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                          </svg>
+                          <span>View Details</span>
+                        </a>
+                        <a href="view_details.html"
+                          class="w-10 h-10 rounded-xl bg-[#F7F9FB] flex items-center justify-center text-gray-600 hover:text-[#1B7DCB] transition-all"
+                          title="Edit"
+                          style="box-shadow: rgba(0, 0, 0, 0.08) 4px 4px 10px, rgba(255, 255, 255, 0.9) -4px -4px 10px;">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-square-pen w-4 h-4" aria-hidden="true">
+                            <path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                            <path
+                              d="M18.375 2.625a1 1 0 0 1 3 3l-9.013 9.014a2 2 0 0 1-.853.505l-2.873.84a.5.5 0 0 1-.62-.62l.84-2.873a2 2 0 0 1 .506-.852z">
+                            </path>
+                          </svg>
+                        </a>
+                        <button
+                          class="w-10 h-10 rounded-xl bg-[#F7F9FB] flex items-center justify-center text-gray-600 hover:text-[#EF4444] transition-all"
+                          title="Withdraw"
+                          style="box-shadow: rgba(0, 0, 0, 0.08) 4px 4px 10px, rgba(255, 255, 255, 0.9) -4px -4px 10px;">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-trash2 lucide-trash-2 w-4 h-4" aria-hidden="true">
+                            <path d="M10 11v6"></path>
+                            <path d="M14 11v6"></path>
+                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path>
+                            <path d="M3 6h18"></path>
+                            <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="bg-[#F7F9FB] rounded-2xl p-5 transition-all hover:translate-x-1"
+                    style="box-shadow: rgba(0, 0, 0, 0.07) 4px 4px 10px inset, rgba(255, 255, 255, 0.9) -4px -4px 10px inset;">
+                    <div class="flex items-center justify-between gap-4">
+                      <div class="flex-1 min-w-0">
+                        <h4 class="text-gray-900 mb-2 truncate">COVID-19 Long-term Effects: A Systematic Review</h4>
+                        <div class="flex items-center gap-3 flex-wrap">
+                          <span class="text-xs text-gray-500">Jan 8,
+                            2025</span><span class="text-xs text-gray-400">•</span><span
+                            class="text-xs text-gray-600">Review Article</span>
+                          <div class="px-3 py-1 rounded-lg text-xs"
+                            style="background: rgba(27, 125, 203, 0.12); color: rgb(27, 125, 203); box-shadow: rgba(0, 0, 0, 0.05) 1px 1px 3px inset;">
+                            In Review
+                          </div>
+                          <div class="px-3 py-1 rounded-lg text-xs"
+                            style="background: rgba(245, 158, 11, 0.12); color: rgb(245, 158, 11); box-shadow: rgba(0, 0, 0, 0.05) 1px 1px 3px inset;">
+                            Processing
+                          </div>
+                        </div>
+                      </div>
+                      <div class="flex items-center gap-2 flex-shrink-0">
+                        <button
+                          class="flex items-center gap-2 bg-[#F7F9FB] rounded-xl px-4 py-2 text-sm text-gray-700 hover:text-[#1B7DCB] transition-all"
+                          style="box-shadow: rgba(0, 0, 0, 0.08) 4px 4px 10px, rgba(255, 255, 255, 0.9) -4px -4px 10px;">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-eye w-4 h-4" aria-hidden="true">
+                            <path
+                              d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0">
+                            </path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                          </svg>
+                          <span>View Details</span>
+                        </button>
+                        <button
+                          class="w-10 h-10 rounded-xl bg-[#F7F9FB] flex items-center justify-center text-gray-600 hover:text-[#1B7DCB] transition-all"
+                          title="Edit"
+                          style="box-shadow: rgba(0, 0, 0, 0.08) 4px 4px 10px, rgba(255, 255, 255, 0.9) -4px -4px 10px;">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-square-pen w-4 h-4" aria-hidden="true">
+                            <path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                            <path
+                              d="M18.375 2.625a1 1 0 0 1 3 3l-9.013 9.014a2 2 0 0 1-.853.505l-2.873.84a.5.5 0 0 1-.62-.62l.84-2.873a2 2 0 0 1 .506-.852z">
+                            </path>
+                          </svg>
+                        </button>
+                        <button
+                          class="w-10 h-10 rounded-xl bg-[#F7F9FB] flex items-center justify-center text-gray-600 hover:text-[#EF4444] transition-all"
+                          title="Withdraw"
+                          style="box-shadow: rgba(0, 0, 0, 0.08) 4px 4px 10px, rgba(255, 255, 255, 0.9) -4px -4px 10px;">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-trash2 lucide-trash-2 w-4 h-4" aria-hidden="true">
+                            <path d="M10 11v6"></path>
+                            <path d="M14 11v6"></path>
+                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path>
+                            <path d="M3 6h18"></path>
+                            <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="bg-[#F7F9FB] rounded-2xl p-5 transition-all hover:translate-x-1"
+                    style="box-shadow: rgba(0, 0, 0, 0.07) 4px 4px 10px inset, rgba(255, 255, 255, 0.9) -4px -4px 10px inset;">
+                    <div class="flex items-center justify-between gap-4">
+                      <div class="flex-1 min-w-0">
+                        <h4 class="text-gray-900 mb-2 truncate">Advances in Gene Therapy for Rare Diseases</h4>
+                        <div class="flex items-center gap-3 flex-wrap">
+                          <span class="text-xs text-gray-500">Jan 5,
+                            2025</span><span class="text-xs text-gray-400">•</span><span
+                            class="text-xs text-gray-600">Research Paper</span>
+                          <div class="px-3 py-1 rounded-lg text-xs" Notifications
+                            style="background: rgba(239, 68, 68, 0.12); color: rgb(239, 68, 68); box-shadow: rgba(0, 0, 0, 0.05) 1px 1px 3px inset;">
+                            Rejected
+                          </div>
+                          <div class="px-3 py-1 rounded-lg text-xs"
+                            style="background: rgba(239, 68, 68, 0.12); color: rgb(239, 68, 68); box-shadow: rgba(0, 0, 0, 0.05) 1px 1px 3px inset;">
+                            Rejected
+                          </div>
+                        </div>
+                      </div>
+                      <div class="flex items-center gap-2 flex-shrink-0">
+                        <button
+                          class="flex items-center gap-2 bg-[#F7F9FB] rounded-xl px-4 py-2 text-sm text-gray-700 hover:text-[#1B7DCB] transition-all"
+                          style="box-shadow: rgba(0, 0, 0, 0.08) 4px 4px 10px, rgba(255, 255, 255, 0.9) -4px -4px 10px;">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-eye w-4 h-4" aria-hidden="true">
+                            <path
+                              d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0">
+                            </path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                          </svg>
+                          <span>View Details</span>
+                        </button>
+                        <button
+                          class="w-10 h-10 rounded-xl bg-[#F7F9FB] flex items-center justify-center text-gray-600 hover:text-[#1B7DCB] transition-all"
+                          title="Edit"
+                          style="box-shadow: rgba(0, 0, 0, 0.08) 4px 4px 10px, rgba(255, 255, 255, 0.9) -4px -4px 10px;">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-square-pen w-4 h-4" aria-hidden="true">
+                            <path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                            <path
+                              d="M18.375 2.625a1 1 0 0 1 3 3l-9.013 9.014a2 2 0 0 1-.853.505l-2.873.84a.5.5 0 0 1-.62-.62l.84-2.873a2 2 0 0 1 .506-.852z">
+                            </path>
+                          </svg>
+                        </button>
+                        <button
+                          class="w-10 h-10 rounded-xl bg-[#F7F9FB] flex items-center justify-center text-gray-600 hover:text-[#EF4444] transition-all"
+                          title="Withdraw"
+                          style="box-shadow: rgba(0, 0, 0, 0.08) 4px 4px 10px, rgba(255, 255, 255, 0.9) -4px -4px 10px;">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-trash2 lucide-trash-2 w-4 h-4" aria-hidden="true">
+                            <path d="M10 11v6"></path>
+                            <path d="M14 11v6"></path>
+                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path>
+                            <path d="M3 6h18"></path>
+                            <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="bg-[#F7F9FB] rounded-2xl p-5 transition-all hover:translate-x-1"
+                    style="box-shadow: rgba(0, 0, 0, 0.07) 4px 4px 10px inset, rgba(255, 255, 255, 0.9) -4px -4px 10px inset;">
+                    <div class="flex items-center justify-between gap-4">
+                      <div class="flex-1 min-w-0">
+                        <h4 class="text-gray-900 mb-2 truncate">Personalized Medicine: Current Trends and Future
+                          Directions
+                        </h4>
+                        <div class="flex items-center gap-3 flex-wrap">
+                          <span class="text-xs text-gray-500">Dec 28,
+                            2024</span><span class="text-xs text-gray-400">•</span><span
+                            class="text-xs text-gray-600">Editorial</span>
+                          <div class="px-3 py-1 rounded-lg text-xs"
+                            style="background: rgba(16, 185, 129, 0.12); color: rgb(16, 185, 129); box-shadow: rgba(0, 0, 0, 0.05) 1px 1px 3px inset;">
+                            Accepted
+                          </div>
+                          <div class="px-3 py-1 rounded-lg text-xs"
+                            style="background: rgba(16, 185, 129, 0.12); color: rgb(16, 185, 129); box-shadow: rgba(0, 0, 0, 0.05) 1px 1px 3px inset;">
+                            Accepted
+                          </div>
+                        </div>
+                      </div>
+                      <div class="flex items-center gap-2 flex-shrink-0">
+                        <button
+                          class="flex items-center gap-2 bg-[#F7F9FB] rounded-xl px-4 py-2 text-sm text-gray-700 hover:text-[#1B7DCB] transition-all"
+                          style="box-shadow: rgba(0, 0, 0, 0.08) 4px 4px 10px, rgba(255, 255, 255, 0.9) -4px -4px 10px;">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-eye w-4 h-4" aria-hidden="true">
+                            <path
+                              d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0">
+                            </path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                          </svg>
+                          <span>View Details</span>
+                        </button>
+                        <button
+                          class="w-10 h-10 rounded-xl bg-[#F7F9FB] flex items-center justify-center text-gray-600 hover:text-[#1B7DCB] transition-all"
+                          title="Edit"
+                          style="box-shadow: rgba(0, 0, 0, 0.08) 4px 4px 10px, rgba(255, 255, 255, 0.9) -4px -4px 10px;">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-square-pen w-4 h-4" aria-hidden="true">
+                            <path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                            <path
+                              d="M18.375 2.625a1 1 0 0 1 3 3l-9.013 9.014a2 2 0 0 1-.853.505l-2.873.84a.5.5 0 0 1-.62-.62l.84-2.873a2 2 0 0 1 .506-.852z">
+                            </path>
+                          </svg>
+                        </button>
+                        <button
+                          class="w-10 h-10 rounded-xl bg-[#F7F9FB] flex items-center justify-center text-gray-600 hover:text-[#EF4444] transition-all"
+                          title="Withdraw"
+                          style="box-shadow: rgba(0, 0, 0, 0.08) 4px 4px 10px, rgba(255, 255, 255, 0.9) -4px -4px 10px;">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-trash2 lucide-trash-2 w-4 h-4" aria-hidden="true">
+                            <path d="M10 11v6"></path>
+                            <path d="M14 11v6"></path>
+                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path>
+                            <path d="M3 6h18"></path>
+                            <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="w-[340px] flex-shrink-0 space-y-6 sticky top-24">
+              <div class="bg-[#F7F9FB] rounded-3xl p-6 w-full"
+                style="box-shadow: rgba(0, 0, 0, 0.1) 12px 12px 28px, rgba(255, 255, 255, 0.9) -12px -12px 28px;">
+                <h3 class="text-gray-900 mb-6"
+                  style="font-family: &quot;Playfair Display&quot;, serif; font-size: 20px; line-height: 1.2;">
+                  Notifications
+                </h3>
+
+
+
+                <div x-data="{ tab: 'notifications' }">
+                  <!-- Tabs -->
+                  <div class="flex gap-2 mb-4 text-xs font-medium">
+                    <!-- Notifications -->
+                    <button @click="tab = 'notifications'"
+                      :class="tab === 'notifications' ? 'active-tab text-white font-semibold' : 'inactive-tab'"
+                      class="flex-1 px-3 py-2 rounded-xl transition-all">
+                      Notifications
+                    </button>
+
+                    <!-- Messages -->
+                    <button @click="tab = 'messages'"
+                      :class="tab === 'messages' ? 'active-tab text-white font-semibold' : 'inactive-tab'"
+                      class="flex-1 px-3 py-2 rounded-xl transition-all">
+                      Messages
+                    </button>
+
+                    <!-- Alerts -->
+                    <button @click="tab = 'alerts'"
+                      :class="tab === 'alerts' ? 'active-tab text-white font-semibold' : 'inactive-tab'"
+                      class="flex-1 px-3 py-2 rounded-xl transition-all">
+                      System Alerts
+                    </button>
+                  </div>
+
+                  <!-- Tab Content -->
+                  <div class="mt-4">
+                    <div x-show="tab === 'notifications'">
+                      <div class="space-y-3 max-h-[500px] overflow-y-auto pr-1">
+                        <div class="bg-[#F7F9FB] rounded-2xl p-4"
+                          style="box-shadow: rgba(0, 0, 0, 0.07) 3px 3px 8px inset, rgba(255, 255, 255, 0.9) -3px -3px 8px inset;">
+                          <div class="flex items-start gap-3">
+                            <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+                              style="background: rgba(16, 185, 129, 0.12); box-shadow: rgba(0, 0, 0, 0.08) 2px 2px 4px inset;">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="lucide lucide-circle-check-big w-5 h-5"
+                                style="color: rgb(16, 185, 129);">
+                                <path d="M21.801 10A10 10 0 1 1 17 3.335"></path>
+                                <path d="m9 11 3 3L22 4"></path>
+                              </svg>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                              <div class="text-sm text-gray-900 mb-1"
+                                style="font-family: Inter, sans-serif; font-weight: 600;">Manuscript Accepted</div>
+                              <p class="text-xs text-gray-600 leading-relaxed mb-2"
+                                style="font-family: Inter, sans-serif;">Your submission "Machine Learning in Cancer
+                                Detection" has been accepted.</p><span class="text-xs text-gray-400"
+                                style="font-family: Inter, sans-serif;">2 hours ago</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="bg-[#F7F9FB] rounded-2xl p-4"
+                          style="box-shadow: rgba(0, 0, 0, 0.07) 3px 3px 8px inset, rgba(255, 255, 255, 0.9) -3px -3px 8px inset;">
+                          <div class="flex items-start gap-3">
+                            <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+                              style="background: rgba(245, 158, 11, 0.12); box-shadow: rgba(0, 0, 0, 0.08) 2px 2px 4px inset;">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="lucide lucide-clock w-5 h-5"
+                                style="color: rgb(245, 158, 11);">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                              </svg>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                              <div class="text-sm text-gray-900 mb-1"
+                                style="font-family: Inter, sans-serif; font-weight: 600;">Review Pending</div>
+                              <p class="text-xs text-gray-600 leading-relaxed mb-2"
+                                style="font-family: Inter, sans-serif;">Pre-screening checks are in progress for
+                                MS-7067732.</p><span class="text-xs text-gray-400"
+                                style="font-family: Inter, sans-serif;">5 hours ago</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="bg-[#F7F9FB] rounded-2xl p-4"
+                          style="box-shadow: rgba(0, 0, 0, 0.07) 3px 3px 8px inset, rgba(255, 255, 255, 0.9) -3px -3px 8px inset;">
+                          <div class="flex items-start gap-3">
+                            <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+                              style="background: rgba(239, 68, 68, 0.12); box-shadow: rgba(0, 0, 0, 0.08) 2px 2px 4px inset;">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="lucide lucide-circle-x w-5 h-5"
+                                style="color: rgb(239, 68, 68);">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="m15 9-6 6"></path>
+                                <path d="m9 9 6 6"></path>
+                              </svg>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                              <div class="text-sm text-gray-900 mb-1"
+                                style="font-family: Inter, sans-serif; font-weight: 600;">Action Required</div>
+                              <p class="text-xs text-gray-600 leading-relaxed mb-2"
+                                style="font-family: Inter, sans-serif;">Please update author contribution details
+                                for your recent submission.</p><span class="text-xs text-gray-400"
+                                style="font-family: Inter, sans-serif;">1 day ago</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div x-show="tab === 'messages'">
+                      <div class="space-y-3 max-h-[500px] overflow-y-auto pr-1">
+                        <div class="bg-[#F7F9FB] rounded-2xl p-4"
+                          style="box-shadow: rgba(0, 0, 0, 0.07) 3px 3px 8px inset, rgba(255, 255, 255, 0.9) -3px -3px 8px inset;">
+                          <div class="flex items-start gap-3">
+                            <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+                              style="background: rgba(27, 125, 203, 0.12); box-shadow: rgba(0, 0, 0, 0.08) 2px 2px 4px inset;">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="lucide lucide-message-square w-5 h-5"
+                                style="color: rgb(27, 125, 203);">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                              </svg>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                              <div class="text-sm text-gray-900 mb-1"
+                                style="font-family: Inter, sans-serif; font-weight: 600;">Editorial Team</div>
+                              <p class="text-xs text-gray-600 leading-relaxed mb-2"
+                                style="font-family: Inter, sans-serif;">Your manuscript requires minor revisions.
+                                Please check the feedback.</p><span class="text-xs text-gray-400"
+                                style="font-family: Inter, sans-serif;">3 hours ago</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="bg-[#F7F9FB] rounded-2xl p-4"
+                          style="box-shadow: rgba(0, 0, 0, 0.07) 3px 3px 8px inset, rgba(255, 255, 255, 0.9) -3px -3px 8px inset;">
+                          <div class="flex items-start gap-3">
+                            <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+                              style="background: rgba(27, 125, 203, 0.12); box-shadow: rgba(0, 0, 0, 0.08) 2px 2px 4px inset;">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="lucide lucide-message-square w-5 h-5"
+                                style="color: rgb(27, 125, 203);">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                              </svg>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                              <div class="text-sm text-gray-900 mb-1"
+                                style="font-family: Inter, sans-serif; font-weight: 600;">Support Team</div>
+                              <p class="text-xs text-gray-600 leading-relaxed mb-2"
+                                style="font-family: Inter, sans-serif;">Your inquiry about submission guidelines has
+                                been answered.</p><span class="text-xs text-gray-400"
+                                style="font-family: Inter, sans-serif;">1 day ago</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div x-show="tab === 'alerts'">
+                      <div class="space-y-3 max-h-[500px] overflow-y-auto pr-1">
+                        <div class="bg-[#F7F9FB] rounded-2xl p-4"
+                          style="box-shadow: rgba(0, 0, 0, 0.07) 3px 3px 8px inset, rgba(255, 255, 255, 0.9) -3px -3px 8px inset;">
+                          <div class="flex items-start gap-3">
+                            <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+                              style="background: rgba(245, 158, 11, 0.12); box-shadow: rgba(0, 0, 0, 0.08) 2px 2px 4px inset;">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="lucide lucide-circle-alert w-5 h-5"
+                                style="color: rgb(245, 158, 11);">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="12" x2="12" y1="8" y2="12"></line>
+                                <line x1="12" x2="12.01" y1="16" y2="16"></line>
+                              </svg>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                              <div class="text-sm text-gray-900 mb-1"
+                                style="font-family: Inter, sans-serif; font-weight: 600;">System Maintenance</div>
+                              <p class="text-xs text-gray-600 leading-relaxed mb-2"
+                                style="font-family: Inter, sans-serif;">Scheduled maintenance on Jan 20, 2025 from
+                                2:00 AM - 4:00 AM UTC.</p><span class="text-xs text-gray-400"
+                                style="font-family: Inter, sans-serif;">2 days ago</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+              </div>
+              <div class="bg-[#F7F9FB] rounded-3xl p-6 w-full"
+                style="box-shadow: rgba(0, 0, 0, 0.1) 12px 12px 28px, rgba(255, 255, 255, 0.9) -12px -12px 28px;">
+                <div class="flex items-center gap-3 mb-6">
+                  <div class="w-10 h-10 rounded-xl flex items-center justify-center"
+                    style="background: linear-gradient(135deg, rgba(27, 125, 203, 0.12) 0%, rgba(56, 182, 255, 0.12) 100%); box-shadow: rgba(0, 0, 0, 0.08) 2px 2px 5px inset;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                      class="lucide lucide-message-circle w-5 h-5 text-[#1B7DCB]" aria-hidden="true">
+                      <path
+                        d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719">
+                      </path>
+                    </svg>
+                  </div>
+                  <h3 class="text-gray-900"
+                    style="font-family: &quot;Playfair Display&quot;, serif; font-size: 20px; line-height: 1.2;">
+                    Support Chat
+                  </h3>
+                </div>
+                <div class="space-y-3 mb-6">
+                  <div class="bg-[#F7F9FB] rounded-2xl p-4"
+                    style="box-shadow: rgba(0, 0, 0, 0.07) 3px 3px 8px inset, rgba(255, 255, 255, 0.9) -3px -3px 8px inset;">
+                    <div class="flex items-start gap-3">
+                      <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
+                        style="background: linear-gradient(135deg, rgb(27, 125, 203) 0%, rgb(56, 182, 255) 100%);">
+                        <span class="text-white text-xs"
+                          style="font-family: Inter, sans-serif; font-weight: 600;">AI</span>
+                      </div>
+                      <div class="flex-1">
+                        <div class="text-xs text-gray-500 mb-1"
+                          style="font-family: Inter, sans-serif; font-weight: 500;">
+                          Support Team</div>
+                        <p class="text-sm text-gray-700 leading-relaxed" style="font-family: Inter, sans-serif;">Hi
+                          Rebin! How can I help you today? I'm here to answer questions about manuscript
+                          submissions.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="space-y-2 mb-6">
+                  <div class="text-xs text-gray-500 mb-3" style="font-family: Inter, sans-serif; font-weight: 500;">
+                    Quick Actions
+                  </div>
+                  <button
+                    class="w-full text-left px-4 py-2.5 rounded-xl text-sm text-gray-700 hover:text-[#1B7DCB] transition-all"
+                    style="box-shadow: rgba(0, 0, 0, 0.06) 3px 3px 8px, rgba(255, 255, 255, 0.9) -3px -3px 8px; font-family: Inter, sans-serif; font-weight: 500;">Check
+                    submission status</button><button
+                    class="w-full text-left px-4 py-2.5 rounded-xl text-sm text-gray-700 hover:text-[#1B7DCB] transition-all"
+                    style="box-shadow: rgba(0, 0, 0, 0.06) 3px 3px 8px, rgba(255, 255, 255, 0.9) -3px -3px 8px; font-family: Inter, sans-serif; font-weight: 500;">Review
+                    guidelines</button><button
+                    class="w-full text-left px-4 py-2.5 rounded-xl text-sm text-gray-700 hover:text-[#1B7DCB] transition-all"
+                    style="box-shadow: rgba(0, 0, 0, 0.06) 3px 3px 8px, rgba(255, 255, 255, 0.9) -3px -3px 8px; font-family: Inter, sans-serif; font-weight: 500;">Contact
+                    editor</button>
+                </div>
+                <div class="bg-[#F7F9FB] rounded-xl p-3 flex items-center gap-2"
+                  style="box-shadow: rgba(0, 0, 0, 0.08) 3px 3px 8px inset, rgba(255, 255, 255, 0.9) -3px -3px 8px inset;">
+                  <input type="text" placeholder="Type your message..."
+                    class="bg-transparent outline-none text-sm text-gray-700 placeholder-gray-400 flex-1"
+                    style="font-family: Inter, sans-serif;" value="">
+                  <button
+                    class="w-8 h-8 rounded-lg flex items-center justify-center transition-all hover:translate-y-[-2px] hover:shadow-[0_4px_12px_rgba(27,125,203,0.4)]"
+                    style="background: linear-gradient(135deg, rgb(27, 125, 203) 0%, rgb(56, 182, 255) 100%); box-shadow: rgba(27, 125, 203, 0.3) 3px 3px 8px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                      class="lucide lucide-send w-4 h-4 text-white" aria-hidden="true">
+                      <path
+                        d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z">
+                      </path>
+                      <path d="m21.854 2.147-10.94 10.939"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </div>
+
+
+</body>
+<script>
+  const modal = document.getElementById('uploadModal');
+  const backdrop = document.getElementById('backdrop');
+  const cancelBtn = document.getElementById('cancelBtn');
+
+  const steps = [document.getElementById('step1'), document.getElementById('step2'), document.getElementById('step3')];
+  const indicators = [step1Indicator, step2Indicator, step3Indicator];
+  let currentStep = 0;
+  let uploadedFile = null;
+
+  const toast = (msg, type = "info") => {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.remove('hidden');
+    t.style.background = type === "error" ? "#DC2626" : type === "success" ? "#16A34A" : "#111";
+    setTimeout(() => t.classList.add('hidden'), 2000);
+  };
+
+
+  const nextBtn = document.getElementById('nextBtn');
+  const backBtn = document.getElementById('backBtn');
+
+  nextBtn.onclick = () => {
+    if (currentStep === 0 && !uploadedFile) return toast("Please upload a manuscript file", "error");
+    if (currentStep === 1) {
+      // const title = titleInput.value.trim();
+      // const authors = authorsInput.value.trim();
+      if (!title || !authors) return toast("Please fill Title & Authors", "error");
+      document.getElementById("reviewFile").textContent = uploadedFile?.name;
+      document.getElementById("reviewTitle").textContent = title;
+      document.getElementById("reviewAuthors").textContent = authors;
+      document.getElementById("reviewKeywords").textContent = document.getElementById("keywords").value;
+    }
+    if (currentStep < 2) currentStep++;
+    updateStep();
+  };
+
+  backBtn.onclick = () => { if (currentStep > 0) currentStep--; updateStep(); };
+
+  function updateStep() {
+    steps.forEach((s, i) => s.classList.toggle('hidden', i !== currentStep));
+    indicators.forEach((el, i) => {
+      el.classList.toggle('text-blue-600', i === currentStep);
+      el.classList.toggle('text-gray-400', i !== currentStep);
+    });
+    backBtn.disabled = currentStep === 0;
+    nextBtn.textContent = currentStep === 2 ? "Submit" : "Next →";
+    if (currentStep === 2) {
+      nextBtn.onclick = () => {
+        toast("Manuscript submitted successfully!", "success");
+        setTimeout(() => modal.classList.add('hidden'), 1000);
+      };
+    } else {
+      nextBtn.onclick = () => {
+        if (currentStep === 0 && !uploadedFile) return toast("Please upload a manuscript file", "error");
+        if (currentStep === 1) {
+          //   const title = titleInput.value.trim();
+          //    const authors = authorsInput.value.trim();
+          if (!title || !authors) return toast("Please fill Title & Authors", "error");
+          document.getElementById("reviewFile").textContent = uploadedFile?.name;
+          document.getElementById("reviewTitle").textContent = title;
+          document.getElementById("reviewAuthors").textContent = authors;
+          document.getElementById("reviewKeywords").textContent = document.getElementById("keywords").value;
+        }
+        currentStep++;
+        updateStep();
+      };
+    }
+  }
+
+  // File upload
+  const dropZone = document.getElementById('dropZone');
+  const uploadPlaceholder = document.getElementById('uploadPlaceholder');
+  const uploadedFileInfo = document.getElementById('uploadedFileInfo');
+  const removeFileBtn = document.getElementById('removeFileBtn');
+  const fileUpload = document.getElementById('fileUpload');
+  const fileNameEl = document.getElementById('fileName');
+  const fileSizeEl = document.getElementById('fileSize');
+
+  dropZone.ondragover = e => { e.preventDefault(); dropZone.classList.add('border-blue-400', 'bg-blue-50'); };
+  dropZone.ondragleave = () => dropZone.classList.remove('border-blue-400', 'bg-blue-50');
+  dropZone.ondrop = e => {
+    e.preventDefault();
+    dropZone.classList.remove('border-blue-400', 'bg-blue-50');
+    const file = e.dataTransfer.files[0];
+    handleFile(file);
+  };
+  fileUpload.onchange = e => { handleFile(e.target.files[0]); };
+
+  function handleFile(file) {
+    if (!file) return;
+    if (!(file.name.endsWith('.pdf') || file.name.endsWith('.docx'))) {
+      toast("Only PDF or DOCX files allowed", "error");
+      return;
+    }
+    uploadedFile = file;
+    fileNameEl.textContent = file.name;
+    fileSizeEl.textContent = (file.size / 1024 / 1024).toFixed(2) + " MB";
+    uploadPlaceholder.classList.add('hidden');
+    uploadedFileInfo.classList.remove('hidden');
+    dropZone.classList.add('border-green-400', 'bg-green-50');
+    toast("File uploaded successfully!", "success");
+  }
+
+  removeFileBtn.onclick = () => {
+    uploadedFile = null;
+    uploadPlaceholder.classList.remove('hidden');
+    uploadedFileInfo.classList.add('hidden');
+    dropZone.classList.remove('border-green-400', 'bg-green-50');
+  };
+</script>
+<script>
+  let currentStep = 1;
+  const totalSteps = 3;
+
+  const steps = [
+    { content: document.getElementById("step1"), indicator: document.getElementById("step1Indicator") },
+    { content: document.getElementById("step2"), indicator: document.getElementById("step2Indicator") },
+    { content: document.getElementById("step3"), indicator: document.getElementById("step3Indicator") },
+  ];
+
+  const backBtn = document.getElementById("backBtn");
+  const nextBtn = document.getElementById("nextBtn");
+
+  // Helper: Update step visibility and styling
+  function updateSteps() {
+    steps.forEach((step, index) => {
+      const isActive = index + 1 === currentStep;
+      // Toggle step content
+      step.content.classList.toggle("hidden", !isActive);
+
+      // Style active indicator
+      if (isActive) {
+        step.indicator.querySelector("div:first-child").style.background =
+          "linear-gradient(135deg, rgb(27, 125, 203) 0%, rgb(56, 182, 255) 100%)";
+        step.indicator.querySelector("div:first-child").style.boxShadow =
+          "rgba(27, 125, 203, 0.4) 0px 4px 12px";
+        step.indicator.querySelector("svg").classList.add("text-white");
+        step.indicator.querySelector("svg").classList.remove("text-gray-400");
+        step.indicator.querySelector("div:last-child div").classList.add("text-gray-900");
+        step.indicator.querySelector("div:last-child div").classList.remove("text-gray-400");
+        step.indicator.querySelector("div:last-child div").style.fontWeight = "600";
+      } else {
+        step.indicator.querySelector("div:first-child").style.background = "rgb(229, 231, 235)";
+        step.indicator.querySelector("div:first-child").style.boxShadow =
+          "rgba(0, 0, 0, 0.1) 2px 2px 4px inset";
+        step.indicator.querySelector("svg").classList.add("text-gray-400");
+        step.indicator.querySelector("svg").classList.remove("text-white");
+        step.indicator.querySelector("div:last-child div").classList.add("text-gray-400");
+        step.indicator.querySelector("div:last-child div").classList.remove("text-gray-900");
+        step.indicator.querySelector("div:last-child div").style.fontWeight = "500";
+      }
+    });
+
+    // Buttons control
+    backBtn.disabled = currentStep === 1;
+    nextBtn.textContent = currentStep === totalSteps ? "Submit" : "Next";
+  }
+
+  // Button actions
+  nextBtn.addEventListener("click", () => {
+    if (currentStep < totalSteps) {
+      currentStep++;
+      updateSteps();
+    } else {
+      alert("✅ Manuscript submitted successfully!");
+      currentStep = 1;
+      updateSteps();
+    }
+  });
+
+  backBtn.addEventListener("click", () => {
+    if (currentStep > 1) {
+      currentStep--;
+      updateSteps();
+    }
+  });
+
+  // Initialize on load
+  updateSteps();
+</script>
+
+</html>

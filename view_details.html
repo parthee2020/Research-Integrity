@@ -1,0 +1,1193 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Research Integrity</title>
+  <link href="css/tailwindcss.css" rel="stylesheet" />
+  <link href="css/login.css" rel="stylesheet" />
+  <link href="css/style.css" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
+<body>
+  <div id="root">
+    <div class="min-h-screen bg-[#f0f4f8]" style="font-family: Inter, system-ui, sans-serif;">
+      <header class="bg-[#F7F9FB] sticky top-0 z-50" style="box-shadow: rgba(0, 0, 0, 0.06) 0px 4px 20px;">
+        <div class="max-w-[1800px] mx-auto px-8 py-4">
+          <div class="flex items-center justify-between gap-8">
+            <div class="flex items-center gap-3 flex-shrink-0">
+              <div class="w-11 h-11 rounded-xl flex items-center justify-center"
+                style="background: linear-gradient(135deg, rgb(27, 125, 203) 0%, rgb(56, 182, 255) 100%); box-shadow: rgba(27, 125, 203, 0.3) 4px 4px 12px, rgba(255, 255, 255, 0.5) -2px -2px 8px;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="lucide lucide-file-text w-6 h-6 text-white" aria-hidden="true">
+                  <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path>
+                  <path d="M14 2v4a2 2 0 0 0 2 2h4"></path>
+                  <path d="M10 9H8"></path>
+                  <path d="M16 13H8"></path>
+                  <path d="M16 17H8"></path>
+                </svg>
+              </div>
+              <div>
+                <div class="text-sm text-gray-500">Research Integrity AI</div>
+                <h1 class="text-gray-900"
+                  style="font-family: &quot;Playfair Display&quot;, serif; font-size: 1.25rem; line-height: 1.2;">
+                  AI Manuscript Evaluation
+                </h1>
+              </div>
+            </div>
+            <div class="flex-1 max-w-xl">
+              <div class="bg-[#F7F9FB] rounded-2xl px-4 py-2.5 w-full flex items-center gap-3"
+                style="box-shadow: rgba(0, 0, 0, 0.08) 4px 4px 10px inset, rgba(255, 255, 255, 0.9) -4px -4px 10px inset;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="lucide lucide-search w-4 h-4 text-gray-400" aria-hidden="true">
+                  <path d="m21 21-4.34-4.34"></path>
+                  <circle cx="11" cy="11" r="8"></circle>
+                </svg>
+                <input type="text" placeholder="Search manuscripts..."
+                  class="bg-transparent outline-none text-sm text-gray-700 placeholder-gray-400 w-full" value="">
+              </div>
+            </div>
+            <div class="flex items-center gap-4 flex-shrink-0">
+              <div class="relative" x-data="{ open: false }">
+                <button @click="open = !open"
+                  class="flex items-center gap-2 bg-[#F7F9FB] rounded-xl px-4 py-2 transition-all hover:translate-y-[-2px]"
+                  style="box-shadow: rgba(0, 0, 0, 0.08) 5px 5px 12px, rgba(255, 255, 255, 0.9) -5px -5px 12px;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-user w-5 h-5 text-gray-600" aria-hidden="true">
+                    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                  </svg>
+                  <span class="text-sm text-gray-700">Rebin</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-chevron-down w-4 h-4 text-gray-500" aria-hidden="true">
+                    <path d="m6 9 6 6 6-6"></path>
+                  </svg>
+                </button>
+                <!-- Dropdown -->
+                <div x-show="open" @click.outside="open = false" x-transition
+                  class="absolute right-0 mt-2 w-44 bg-white border border-gray-100 rounded-xl shadow-lg overflow-hidden z-50">
+
+                  <a href="#"
+                    class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#1B7DCB]">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                      class="lucide lucide-settings w-4 h-4">
+                      <path
+                        d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z">
+                      </path>
+                      <circle cx="12" cy="12" r="3"></circle>
+                    </svg>&nbsp;Settings
+                  </a>
+                  <a href="login.html"
+                    class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-red-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                      class="lucide lucide-log-out w-4 h-4">
+                      <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                      <polyline points="16 17 21 12 16 7"></polyline>
+                      <line x1="21" x2="9" y1="12" y2="12"></line>
+                    </svg>&nbsp;Logout
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+      <main class="max-w-[1440px] mx-auto  px-6 py-6">
+        <div class="p-3">
+          <h2 class="text-2xl text-[#101828] mb-1">Pre-Screening Checks</h2>
+          <p class="text-sm text-[#6a7282]">AI-assisted manuscript integrity evaluation</p>
+        </div>
+        <div x-data="{ tab: 'pre' }">
+          <!-- Tabs -->
+          <div class="items-center gap-2 overflow-x-auto p-4">
+            <!-- Home -->
+
+            <button @click="tab = 'home'; window.location.href = 'dashboard.html'"
+              :class="tab === 'home' ? 'active text-white font-semibold' : 'inactive hover:translate-y-[-1px]'"
+              class="px-5 h-10 rounded-xl text-sm whitespace-nowrap transition-all">
+              Home
+            </button>
+            <!-- Pre-Screening Checks -->
+            <button @click="tab = 'pre'"
+              :class="tab === 'pre' ? 'active text-white font-semibold' : 'inactive hover:translate-y-[-1px]'"
+              class="px-5 h-10 rounded-xl text-sm whitespace-nowrap transition-all">
+              Pre-Screening Checks
+            </button>
+            <!-- Metadata Validation -->
+            <button @click="tab = 'metavalidation'"
+              :class="tab === 'metavalidation' ? 'active text-white font-semibold' : 'inactive hover:translate-y-[-1px]'"
+              class="px-5 h-10 rounded-xl text-sm whitespace-nowrap transition-all">
+              Metadata Validation
+            </button>
+            <!-- Author Verification -->
+            <button @click="tab = 'author'"
+              :class="tab === 'author' ? 'active text-white font-semibold' : 'inactive hover:translate-y-[-1px]'"
+              class="px-5 h-10 rounded-xl text-sm whitespace-nowrap transition-all">
+              Author Verification
+            </button>
+            <!-- Reference Analysis -->
+            <button @click="tab = 'reference'"
+              :class="tab === 'reference' ? 'active text-white font-semibold' : 'inactive hover:translate-y-[-1px]'"
+              class="px-5 h-10 rounded-xl text-sm whitespace-nowrap transition-all">
+              Reference Analysis
+            </button>
+            <!-- Final Report -->
+            <button @click="tab = 'report'"
+              :class="tab === 'report' ? 'active text-white font-semibold' : 'inactive hover:translate-y-[-1px]'"
+              class="px-5 h-10 rounded-xl text-sm whitespace-nowrap transition-all">
+              Final Report
+            </button>
+            <!-- Tab Content -->
+            <div x-show="tab === 'pre'" class="mb-8 mt-8">
+              <div
+                class="bg-[#f0f4f8] rounded-2xl shadow-[6px_6px_16px_0px_rgba(0,0,0,0.05),-6px_-6px_16px_0px_rgba(255,255,255,0.85)] p-6 relative overflow-hidden">
+                <div
+                  class="absolute inset-0 bg-gradient-to-br from-[rgba(27,125,203,0.02)] to-[rgba(56,182,255,0.02)] pointer-events-none">
+                </div>
+                <div class="relative flex items-start justify-between gap-6">
+                  <div class="flex-1">
+                    <h3 class="text-lg text-[#101828] mb-3 leading-tight">Novel Biomarkers in Early Detection of
+                      Pancreatic
+                      Cancer Through Machine Learning Analysis</h3>
+                    <div class="grid grid-cols-4 gap-3">
+                      <div
+                        class="bg-[#f0f4f8] rounded-xl p-3 shadow-[3px_3px_8px_0px_inset_rgba(0,0,0,0.05),-3px_-3px_8px_0px_inset_rgba(255,255,255,0.85)]">
+                        <div class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-calendar size-4 text-[#6366F1]">
+                            <path d="M8 2v4"></path>
+                            <path d="M16 2v4"></path>
+                            <rect width="18" height="18" x="3" y="4" rx="2"></rect>
+                            <path d="M3 10h18"></path>
+                          </svg>
+                          <div>
+                            <p class="text-[10px] text-[#6a7282] uppercase tracking-wide leading-tight">Upload Date</p>
+                            <p class="text-sm text-[#101828] leading-tight mt-0.5">Jan 15, 2025</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="bg-[#f0f4f8] rounded-xl p-3 shadow-[3px_3px_8px_0px_inset_rgba(0,0,0,0.05),-3px_-3px_8px_0px_inset_rgba(255,255,255,0.85)]">
+                        <div class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-user size-4 text-[#9810FA]">
+                            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                          </svg>
+                          <div>
+                            <p class="text-[10px] text-[#6a7282] uppercase tracking-wide leading-tight">Author</p>
+                            <p class="text-sm text-[#101828] leading-tight mt-0.5">Dr. Sarah Mitchell</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="bg-[#f0f4f8] rounded-xl p-3 shadow-[3px_3px_8px_0px_inset_rgba(0,0,0,0.05),-3px_-3px_8px_0px_inset_rgba(255,255,255,0.85)]">
+                        <div class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-file-text size-4 text-[#10B981]">
+                            <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path>
+                            <path d="M14 2v4a2 2 0 0 0 2 2h4"></path>
+                            <path d="M10 9H8"></path>
+                            <path d="M16 13H8"></path>
+                            <path d="M16 17H8"></path>
+                          </svg>
+                          <div>
+                            <p class="text-[10px] text-[#6a7282] uppercase tracking-wide leading-tight">Word Count</p>
+                            <p class="text-sm text-[#101828] leading-tight mt-0.5">9,033 words</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="bg-[#f0f4f8] rounded-xl p-3 shadow-[3px_3px_8px_0px_inset_rgba(0,0,0,0.05),-3px_-3px_8px_0px_inset_rgba(255,255,255,0.85)]">
+                        <div class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-globe size-4 text-[#F59E0B]">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
+                            <path d="M2 12h20"></path>
+                          </svg>
+                          <div>
+                            <p class="text-[10px] text-[#6a7282] uppercase tracking-wide leading-tight">Language</p>
+                            <p class="text-sm text-[#101828] leading-tight mt-0.5">English (US)</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flex gap-4 items-center flex-shrink-0">
+                    <div
+                      class="relative size-[140px] rounded-2xl shadow-[5px_5px_14px_0px_rgba(0,0,0,0.06),-5px_-5px_14px_0px_rgba(255,255,255,0.9)]">
+                      <div class="absolute inset-0 p-3"><svg class="size-full" viewBox="0 0 120 120">
+                          <circle cx="60" cy="60" r="52" fill="none" stroke="#E0E7EF" stroke-width="8"></circle>
+                          <circle cx="60" cy="60" r="52" fill="none" stroke="url(#scoreGradient)" stroke-width="8"
+                            stroke-linecap="round" stroke-dasharray="326.7" stroke-dashoffset="45.74"
+                            transform="rotate(-90 60 60)"></circle>
+                          <defs>
+                            <linearGradient id="scoreGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                              <stop offset="0%" stop-color="#1B7DCB"></stop>
+                              <stop offset="100%" stop-color="#14B8A6"></stop>
+                            </linearGradient>
+                          </defs>
+                        </svg>
+                        <div class="absolute inset-0 flex flex-col items-center justify-center">
+                          <p class="text-3xl text-[#101828] leading-none mb-1">86</p>
+                          <p class="text-[9px] text-[#6a7282] tracking-wider uppercase">Integrity Score</p>
+                        </div>
+                      </div>
+                      <div
+                        class="absolute inset-0 pointer-events-none shadow-[1px_1px_3px_0px_inset_rgba(255,255,255,0.6)] rounded-2xl">
+                      </div>
+                    </div>
+                    <div
+                      class="bg-[#f7f9fb] rounded-xl p-3 w-[120px] shadow-[3px_3px_8px_0px_inset_rgba(0,0,0,0.05),-3px_-3px_8px_0px_inset_rgba(255,255,255,0.85)]">
+                      <p class="text-[9px] text-[#6a7282] text-center tracking-wider uppercase mb-2">Status</p>
+                      <div class="bg-amber-50 rounded-lg px-2 py-1.5 shadow-[1px_1px_3px_0px_inset_rgba(0,0,0,0.05)]">
+                        <p class="text-xs text-amber-600 text-center leading-tight">In Review</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
+              <div class="mb-8 mt-8">
+                <div class="flex items-start justify-between">
+                  <div>
+                    <h3 class="text-xl text-[#101828] mb-1">Validation Results</h3>
+                    <p class="text-sm text-[#6a7282]">7 checks completed • <span class="text-red-600">1 issue
+                        detected</span>
+                      • <span class="text-amber-600">2 warnings</span></p>
+                  </div>
+                  <div class="flex items-center gap-3">
+                    <!-- Re-run All Checks -->
+                    <button onclick="setActiveButton(this)"
+                      class="action-btn active rounded-xl px-4 h-10 shadow-[3px_3px_8px_rgba(27,125,203,0.2)] text-sm flex items-center gap-2 hover:translate-y-[-1px] transition-all">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-rotate-cw size-4">
+                        <path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"></path>
+                        <path d="M21 3v5h-5"></path>
+                      </svg>
+                      Re-run All Checks
+                    </button>
+
+                    <!-- Export Report -->
+                    <button onclick="setActiveButton(this)"
+                      class="action-btn  rounded-xl px-4 h-10 shadow-[3px_3px_8px_rgba(0,0,0,0.06),-3px_-3px_8px_rgba(255,255,255,0.85)]  text-sm flex items-center gap-2 hover:translate-y-[-1px] transition-all">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-download size-4">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" x2="12" y1="15" y2="3"></line>
+                      </svg>
+                      Export Report
+                    </button>
+
+                    <!-- Download Data -->
+                    <button onclick="setActiveButton(this)"
+                      class="action-btn  rounded-xl px-4 h-10 shadow-[3px_3px_8px_rgba(0,0,0,0.06),-3px_-3px_8px_rgba(255,255,255,0.85)]  text-sm flex items-center gap-2 hover:translate-y-[-1px] transition-all">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-upload size-4">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="17 8 12 3 7 8"></polyline>
+                        <line x1="12" x2="12" y1="3" y2="15"></line>
+                      </svg>
+                      Download Data
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div x-data="{ openCard: null }" class="relative">
+
+                <!-- ====== Card Grid ====== -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pb-8">
+
+                  <!-- Card 1 -->
+                  <div @click="openCard = 'language'" class="bg-[#f0f4f8] rounded-2xl shadow-[5px_5px_14px_rgba(0,0,0,0.05)] 
+             overflow-hidden relative group hover:translate-y-[-2px] transition-all cursor-pointer">
+                    <div class="h-1 w-full bg-gradient-to-r from-emerald-500 via-emerald-400 to-transparent opacity-80">
+                    </div>
+                    <div class="p-5">
+                      <div class="flex items-start justify-between mb-4">
+                        <div class="bg-emerald-50 size-12 rounded-xl flex items-center justify-center shadow-inner">
+                          <div class="text-emerald-600">
+                            <!-- Icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round" class="size-5">
+                              <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path>
+                              <path d="M14 2v4a2 2 0 0 0 2 2h4"></path>
+                              <path d="M10 9H8M16 13H8M16 17H8"></path>
+                            </svg>
+                          </div>
+                        </div>
+                        <div class="bg-emerald-50 px-2.5 py-1 rounded-lg">
+                          <span class="text-xs text-emerald-600">Passed</span>
+                        </div>
+                      </div>
+                      <h4 class="text-base text-[#101828] mb-2">Language & Wordcount</h4>
+                      <p class="text-sm text-[#4a5565] mb-4">9,033 words detected in English with proper academic
+                        structure</p>
+                      <div
+                        class="bg-[#f0f4f8] rounded-xl px-4 py-2.5 shadow-inner flex items-center justify-between group-hover:shadow-md transition-all">
+                        <span class="text-sm text-[#4a5565]">View Details</span>
+                        <svg class="size-4" fill="none" viewBox="0 0 20 20">
+                          <path d="M4.143 9.943H15.744M15.744 9.943L10.963 5.162M15.744 9.943L10.963 14.724"
+                            stroke="#4A5565" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.657"></path>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Card 2 -->
+                  <div @click="openCard = 'Suspicious'" class="bg-[#f0f4f8] rounded-2xl shadow-[5px_5px_14px_rgba(0,0,0,0.05)] 
+             overflow-hidden relative group hover:translate-y-[-2px] transition-all cursor-pointer">
+                    <div class="h-1 w-full bg-gradient-to-r from-red-500 via-red-400 to-transparent opacity-80">
+                    </div>
+                   <div class="p-5">
+                    <div class="flex items-start justify-between mb-4">
+                      <div class="bg-red-50 size-12 rounded-xl flex items-center justify-center shadow-[2px_2px_6px_0px_inset_rgba(0,0,0,0.06),-2px_-2px_6px_0px_inset_rgba(255,255,255,0.5)]">
+                        <div class="text-red-600"><svg class="size-5" fill="none" viewBox="0 0 30 30">
+                            <path d="M14.915 27.343C21.918 27.343 27.6 21.661 27.6 14.657C27.6 7.654 21.918 1.972 14.915 1.972C7.911 1.972 2.229 7.654 2.229 14.657C2.229 21.661 7.911 27.343 14.915 27.343Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.486">
+                            </path>
+                            <path d="M14.915 11.186V16.158M14.915 21.13H14.927" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.486"></path>
+                          </svg></div>
+                      </div>
+                      <div class="bg-red-50 px-2.5 py-1 rounded-lg shadow-[1px_1px_3px_0px_inset_rgba(0,0,0,0.05)]">
+                        <span class="text-xs text-red-600">Issue Found</span>
+                      </div>
+                    </div>
+                    <h4 class="text-base text-[#101828] mb-2 leading-tight">Suspicious Words</h4>
+                    <p class="text-sm text-[#4a5565] leading-relaxed mb-4">3 flagged terms detected — potential paper
+                      mill
+                      indicators</p>
+                    <div class="bg-[#f0f4f8] rounded-xl px-4 py-2.5 shadow-[3px_3px_6px_0px_inset_rgba(0,0,0,0.05),-3px_-3px_6px_0px_inset_rgba(255,255,255,0.85)] flex items-center justify-between group-hover:shadow-[2px_2px_5px_0px_inset_rgba(0,0,0,0.07),-2px_-2px_5px_0px_inset_rgba(255,255,255,0.85)] transition-all">
+                      <span class="text-sm text-[#4a5565]">View Details</span><svg class="size-4" fill="none" viewBox="0 0 20 20">
+                        <path d="M4.143 9.943H15.744M15.744 9.943L10.963 5.162M15.744 9.943L10.963 14.724" stroke="#4A5565" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.657"></path>
+                      </svg>
+                    </div>
+                  </div>
+                  </div>
+
+                
+                  <!-- Card 3 -->
+                  <div @click="openCard = 'ithenticate'" class="bg-[#f0f4f8] rounded-2xl shadow-[5px_5px_14px_rgba(0,0,0,0.05)] 
+             overflow-hidden relative group hover:translate-y-[-2px] transition-all cursor-pointer">
+                    <div class="h-1 w-full bg-gradient-to-r from-green-500 via-green-400 to-transparent opacity-80">
+                    </div>
+                   <div class="p-5">
+                    <div class="flex items-start justify-between mb-4">
+                      <div class="bg-emerald-50 size-12 rounded-xl flex items-center justify-center shadow-[2px_2px_6px_0px_inset_rgba(0,0,0,0.06),-2px_-2px_6px_0px_inset_rgba(255,255,255,0.5)]">
+                        <div class="text-emerald-600"><svg class="size-5" fill="none" viewBox="0 0 30 30">
+                            <path d="M27.343 14.657C27.343 21.661 21.661 27.343 14.657 27.343C7.654 27.343 1.972 21.661 1.972 14.657C1.972 7.654 7.654 1.972 14.657 1.972C21.661 1.972 27.343 7.654 27.343 14.657Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.486">
+                            </path>
+                            <path d="M19.629 11.429L13.414 17.643L9.686 13.914" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.486"></path>
+                          </svg></div>
+                      </div>
+                      <div class="bg-emerald-50 px-2.5 py-1 rounded-lg shadow-[1px_1px_3px_0px_inset_rgba(0,0,0,0.05)]">
+                        <span class="text-xs text-emerald-600">Passed</span>
+                      </div>
+                    </div>
+                    <h4 class="text-base text-[#101828] mb-2 leading-tight">iThenticate Score</h4>
+                    <p class="text-sm text-[#4a5565] leading-relaxed mb-4">12% similarity — within acceptable range for
+                      this
+                      journal</p>
+                    <div class="bg-[#f0f4f8] rounded-xl px-4 py-2.5 shadow-[3px_3px_6px_0px_inset_rgba(0,0,0,0.05),-3px_-3px_6px_0px_inset_rgba(255,255,255,0.85)] flex items-center justify-between group-hover:shadow-[2px_2px_5px_0px_inset_rgba(0,0,0,0.07),-2px_-2px_5px_0px_inset_rgba(255,255,255,0.85)] transition-all">
+                      <span class="text-sm text-[#4a5565]">View Details</span><svg class="size-4" fill="none" viewBox="0 0 20 20">
+                        <path d="M4.143 9.943H15.744M15.744 9.943L10.963 5.162M15.744 9.943L10.963 14.724" stroke="#4A5565" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.657"></path>
+                      </svg>
+                    </div>
+                  </div>
+                  </div>
+                     <div
+                  class="bg-[#f0f4f8] rounded-2xl shadow-[5px_5px_14px_0px_rgba(0,0,0,0.05),-5px_-5px_14px_0px_rgba(255,255,255,0.85)] overflow-hidden relative group hover:translate-y-[-2px] transition-all cursor-pointer">
+                  <div class="h-1 w-full bg-gradient-to-r from-amber-500 via-amber-400 to-transparent opacity-80"></div>
+
+                  <div class="p-5">
+                    <div class="flex items-start justify-between mb-4">
+                      <div
+                        class="bg-amber-50 size-12 rounded-xl flex items-center justify-center shadow-[2px_2px_6px_0px_inset_rgba(0,0,0,0.06),-2px_-2px_6px_0px_inset_rgba(255,255,255,0.5)]">
+                        <div class="text-amber-600"><svg class="size-5" fill="none" viewBox="0 0 30 30">
+                            <path
+                              d="M14.657 1.972V27.343M22.372 6.2L14.657 1.972L6.943 6.2M22.372 23.114L14.657 27.343L6.943 23.114M27.343 10.429V19.886L22.372 23.114V6.2L27.343 10.429ZM6.943 6.2V23.114L1.972 19.886V10.429L6.943 6.2Z"
+                              stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.486">
+                            </path>
+                          </svg></div>
+                      </div>
+                      <div class="bg-amber-50 px-2.5 py-1 rounded-lg shadow-[1px_1px_3px_0px_inset_rgba(0,0,0,0.05)]">
+                        <span class="text-xs text-amber-600">Warning</span>
+                      </div>
+                    </div>
+                    <h4 class="text-base text-[#101828] mb-2 leading-tight">Submission Similarity</h4>
+                    <p class="text-sm text-[#4a5565] leading-relaxed mb-4">Moderate match to 2 prior submissions from
+                      same
+                      institution</p>
+                    <div
+                      class="bg-[#f0f4f8] rounded-xl px-4 py-2.5 shadow-[3px_3px_6px_0px_inset_rgba(0,0,0,0.05),-3px_-3px_6px_0px_inset_rgba(255,255,255,0.85)] flex items-center justify-between group-hover:shadow-[2px_2px_5px_0px_inset_rgba(0,0,0,0.07),-2px_-2px_5px_0px_inset_rgba(255,255,255,0.85)] transition-all">
+                      <span class="text-sm text-[#4a5565]">View Details</span><svg class="size-4" fill="none"
+                        viewBox="0 0 20 20">
+                        <path d="M4.143 9.943H15.744M15.744 9.943L10.963 5.162M15.744 9.943L10.963 14.724"
+                          stroke="#4A5565" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.657"></path>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="bg-[#f0f4f8] rounded-2xl shadow-[5px_5px_14px_0px_rgba(0,0,0,0.05),-5px_-5px_14px_0px_rgba(255,255,255,0.85)] overflow-hidden relative group hover:translate-y-[-2px] transition-all cursor-pointer">
+                  <div class="h-1 w-full bg-gradient-to-r from-emerald-500 via-emerald-400 to-transparent opacity-80">
+                  </div>
+                  <div class="p-5">
+                    <div class="flex items-start justify-between mb-4">
+                      <div
+                        class="bg-emerald-50 size-12 rounded-xl flex items-center justify-center shadow-[2px_2px_6px_0px_inset_rgba(0,0,0,0.06),-2px_-2px_6px_0px_inset_rgba(255,255,255,0.5)]">
+                        <div class="text-emerald-600"><svg class="size-5" fill="none" viewBox="0 0 30 30">
+                            <path
+                              d="M11.186 6.943L14.657 2.229L18.129 6.943M7.714 27.343H21.6C22.919 27.343 24.186 26.819 25.125 25.88C26.064 24.941 26.586 23.674 26.586 22.354V12.157C26.586 10.838 26.064 9.571 25.125 8.632C24.186 7.693 22.919 7.169 21.6 7.169H7.714C6.395 7.169 5.128 7.693 4.189 8.632C3.25 9.571 2.728 10.838 2.728 12.157V22.354C2.728 23.674 3.25 24.941 4.189 25.88C5.128 26.819 6.395 27.343 7.714 27.343Z"
+                              stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.486">
+                            </path>
+                          </svg></div>
+                      </div>
+                      <div class="bg-emerald-50 px-2.5 py-1 rounded-lg shadow-[1px_1px_3px_0px_inset_rgba(0,0,0,0.05)]">
+                        <span class="text-xs text-emerald-600">Passed</span>
+                      </div>
+                    </div>
+                    <h4 class="text-base text-[#101828] mb-2 leading-tight">Paper Mill Detection</h4>
+                    <p class="text-sm text-[#4a5565] leading-relaxed mb-4">No paper mill signatures or template patterns
+                      detected</p>
+                    <div
+                      class="bg-[#f0f4f8] rounded-xl px-4 py-2.5 shadow-[3px_3px_6px_0px_inset_rgba(0,0,0,0.05),-3px_-3px_6px_0px_inset_rgba(255,255,255,0.85)] flex items-center justify-between group-hover:shadow-[2px_2px_5px_0px_inset_rgba(0,0,0,0.07),-2px_-2px_5px_0px_inset_rgba(255,255,255,0.85)] transition-all">
+                      <span class="text-sm text-[#4a5565]">View Details</span><svg class="size-4" fill="none"
+                        viewBox="0 0 20 20">
+                        <path d="M4.143 9.943H15.744M15.744 9.943L10.963 5.162M15.744 9.943L10.963 14.724"
+                          stroke="#4A5565" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.657"></path>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="bg-[#f0f4f8] rounded-2xl shadow-[5px_5px_14px_0px_rgba(0,0,0,0.05),-5px_-5px_14px_0px_rgba(255,255,255,0.85)] overflow-hidden relative group hover:translate-y-[-2px] transition-all cursor-pointer">
+                  <div class="h-1 w-full bg-gradient-to-r from-amber-500 via-amber-400 to-transparent opacity-80"></div>
+                  <div class="p-5">
+                    <div class="flex items-start justify-between mb-4">
+                      <div
+                        class="bg-amber-50 size-12 rounded-xl flex items-center justify-center shadow-[2px_2px_6px_0px_inset_rgba(0,0,0,0.06),-2px_-2px_6px_0px_inset_rgba(255,255,255,0.5)]">
+                        <div class="text-amber-600"><svg class="size-5" fill="none" viewBox="0 0 30 30">
+                            <path
+                              d="M22.829 7.486C20.592 5.249 17.523 3.972 14.343 3.972C11.163 3.972 8.094 5.249 5.857 7.486C3.62 9.723 2.343 12.792 2.343 15.972C2.343 19.152 3.62 22.221 5.857 24.458M7.857 22.458C9.586 24.187 11.914 25.186 14.343 25.186C16.772 25.186 19.1 24.187 20.829 22.458C22.558 20.729 23.557 18.401 23.557 15.972C23.557 13.543 22.558 11.215 20.829 9.486"
+                              stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.486">
+                            </path>
+                          </svg></div>
+                      </div>
+                      <div class="bg-amber-50 px-2.5 py-1 rounded-lg shadow-[1px_1px_3px_0px_inset_rgba(0,0,0,0.05)]">
+                        <span class="text-xs text-amber-600">Warning</span>
+                      </div>
+                    </div>
+                    <h4 class="text-base text-[#101828] mb-2 leading-tight">Machine-Generated Content</h4>
+                    <p class="text-sm text-[#4a5565] leading-relaxed mb-4">81% AI-generated probability in Discussion
+                      section
+                    </p>
+                    <div
+                      class="bg-[#f0f4f8] rounded-xl px-4 py-2.5 shadow-[3px_3px_6px_0px_inset_rgba(0,0,0,0.05),-3px_-3px_6px_0px_inset_rgba(255,255,255,0.85)] flex items-center justify-between group-hover:shadow-[2px_2px_5px_0px_inset_rgba(0,0,0,0.07),-2px_-2px_5px_0px_inset_rgba(255,255,255,0.85)] transition-all">
+                      <span class="text-sm text-[#4a5565]">View Details</span><svg class="size-4" fill="none"
+                        viewBox="0 0 20 20">
+                        <path d="M4.143 9.943H15.744M15.744 9.943L10.963 5.162M15.744 9.943L10.963 14.724"
+                          stroke="#4A5565" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.657"></path>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="bg-[#f0f4f8] rounded-2xl shadow-[5px_5px_14px_0px_rgba(0,0,0,0.05),-5px_-5px_14px_0px_rgba(255,255,255,0.85)] overflow-hidden relative group hover:translate-y-[-2px] transition-all cursor-pointer">
+                  <div class="h-1 w-full bg-gradient-to-r from-red-500 via-red-400 to-transparent opacity-80"></div>
+
+                  <div class="p-5">
+                    <div class="flex items-start justify-between mb-4">
+                      <div
+                        class="bg-red-50 size-12 rounded-xl flex items-center justify-center shadow-[2px_2px_6px_0px_inset_rgba(0,0,0,0.06),-2px_-2px_6px_0px_inset_rgba(255,255,255,0.5)]">
+                        <div class="text-red-600"><svg class="size-5" fill="none" viewBox="0 0 30 30">
+                            <path
+                              d="M14.657 27.343C21.661 27.343 27.343 21.661 27.343 14.657C27.343 7.654 21.661 1.972 14.657 1.972C7.654 1.972 1.972 7.654 1.972 14.657C1.972 21.661 7.654 27.343 14.657 27.343Z"
+                              stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.486">
+                            </path>
+                            <path
+                              d="M11.429 11.429C11.429 10.549 11.778 9.705 12.397 9.086C13.016 8.467 13.86 8.118 14.74 8.118C15.62 8.118 16.464 8.467 17.083 9.086C17.702 9.705 18.051 10.549 18.051 11.429C18.051 13.914 14.657 15.157 14.657 15.157M14.74 20.886H14.757"
+                              stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.486">
+                            </path>
+                          </svg></div>
+                      </div>
+                      <div class="bg-red-50 px-2.5 py-1 rounded-lg shadow-[1px_1px_3px_0px_inset_rgba(0,0,0,0.05)]">
+                        <span class="text-xs text-red-600">Issue Found</span>
+                      </div>
+                    </div>
+                    <h4 class="text-base text-[#101828] mb-2 leading-tight">Problematic Phrases</h4>
+                    <p class="text-sm text-[#4a5565] leading-relaxed mb-4">12 instances of vague expressions requiring
+                      clarification</p>
+                    <div
+                      class="bg-[#f0f4f8] rounded-xl px-4 py-2.5 shadow-[3px_3px_6px_0px_inset_rgba(0,0,0,0.05),-3px_-3px_6px_0px_inset_rgba(255,255,255,0.85)] flex items-center justify-between group-hover:shadow-[2px_2px_5px_0px_inset_rgba(0,0,0,0.07),-2px_-2px_5px_0px_inset_rgba(255,255,255,0.85)] transition-all">
+                      <span class="text-sm text-[#4a5565]">View Details</span><svg class="size-4" fill="none"
+                        viewBox="0 0 20 20">
+                        <path d="M4.143 9.943H15.744M15.744 9.943L10.963 5.162M15.744 9.943L10.963 14.724"
+                          stroke="#4A5565" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.657"></path>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="bg-[#f0f4f8] rounded-2xl shadow-[5px_5px_14px_0px_rgba(0,0,0,0.05),-5px_-5px_14px_0px_rgba(255,255,255,0.85)] overflow-hidden relative group hover:translate-y-[-2px] transition-all cursor-pointer">
+                  <div class="h-1 w-full bg-gradient-to-r from-amber-500 via-amber-400 to-transparent opacity-80"></div>
+
+                  <div class="p-5">
+                    <div class="flex items-start justify-between mb-4">
+                      <div
+                        class="bg-emerald-50 size-12 rounded-xl flex items-center justify-center shadow-[2px_2px_6px_0px_inset_rgba(0,0,0,0.06),-2px_-2px_6px_0px_inset_rgba(255,255,255,0.5)]">
+                        <div class="text-emerald-600"><svg class="size-5" fill="none" viewBox="0 0 30 30">
+                            <path
+                              d="M14.657 27.343C21.661 27.343 27.343 21.661 27.343 14.657C27.343 7.654 21.661 1.972 14.657 1.972C7.654 1.972 1.972 7.654 1.972 14.657C1.972 21.661 7.654 27.343 14.657 27.343Z"
+                              stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.486">
+                            </path>
+                            <path d="M14.657 8.657V14.657L18.886 16.771" stroke="currentColor" stroke-linecap="round"
+                              stroke-linejoin="round" stroke-width="2.486"></path>
+                          </svg></div>
+                      </div>
+                      <div class="bg-emerald-50 px-2.5 py-1 rounded-lg shadow-[1px_1px_3px_0px_inset_rgba(0,0,0,0.05)]">
+                        <span class="text-xs text-emerald-600">Passed</span>
+                      </div>
+                    </div>
+                    <h4 class="text-base text-[#101828] mb-2 leading-tight">Scope Match</h4>
+                    <p class="text-sm text-[#4a5565] leading-relaxed mb-4">97% alignment with journal focus areas</p>
+                    <div
+                      class="bg-[#f0f4f8] rounded-xl px-4 py-2.5 shadow-[3px_3px_6px_0px_inset_rgba(0,0,0,0.05),-3px_-3px_6px_0px_inset_rgba(255,255,255,0.85)] flex items-center justify-between group-hover:shadow-[2px_2px_5px_0px_inset_rgba(0,0,0,0.07),-2px_-2px_5px_0px_inset_rgba(255,255,255,0.85)] transition-all">
+                      <span class="text-sm text-[#4a5565]">View Details</span><svg class="size-4" fill="none"
+                        viewBox="0 0 20 20">
+                        <path d="M4.143 9.943H15.744M15.744 9.943L10.963 5.162M15.744 9.943L10.963 14.724"
+                          stroke="#4A5565" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.657"></path>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="bg-[#f0f4f8] rounded-2xl shadow-[5px_5px_14px_0px_rgba(0,0,0,0.05),-5px_-5px_14px_0px_rgba(255,255,255,0.85)] overflow-hidden relative group hover:translate-y-[-2px] transition-all cursor-pointer">
+                  <div class="h-1 w-full bg-gradient-to-r from-amber-500 via-amber-400 to-transparent opacity-80"></div>
+
+                  <div class="p-5">
+                    <div class="flex items-start justify-between mb-4">
+                      <div
+                        class="bg-emerald-50 size-12 rounded-xl flex items-center justify-center shadow-[2px_2px_6px_0px_inset_rgba(0,0,0,0.06),-2px_-2px_6px_0px_inset_rgba(255,255,255,0.5)]">
+                        <div class="text-emerald-600"><svg class="size-5" fill="none" viewBox="0 0 30 30">
+                            <path
+                              d="M24.857 3.714H5.143C4.481 3.714 3.943 4.252 3.943 4.914V25.4C3.943 26.062 4.481 26.6 5.143 26.6H24.857C25.519 26.6 26.057 26.062 26.057 25.4V4.914C26.057 4.252 25.519 3.714 24.857 3.714Z"
+                              stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.486">
+                            </path>
+                            <path d="M8.657 10.429H21.343M8.657 15.4H21.343M8.657 20.371H15.4" stroke="currentColor"
+                              stroke-linecap="round" stroke-linejoin="round" stroke-width="2.486"></path>
+                          </svg></div>
+                      </div>
+                      <div class="bg-emerald-50 px-2.5 py-1 rounded-lg shadow-[1px_1px_3px_0px_inset_rgba(0,0,0,0.05)]">
+                        <span class="text-xs text-emerald-600">Passed</span>
+                      </div>
+                    </div>
+                    <h4 class="text-base text-[#101828] mb-2 leading-tight">Reference Analysis</h4>
+                    <p class="text-sm text-[#4a5565] leading-relaxed mb-4">Citation diversity meets journal standards
+                    </p>
+                    <div
+                      class="bg-[#f0f4f8] rounded-xl px-4 py-2.5 shadow-[3px_3px_6px_0px_inset_rgba(0,0,0,0.05),-3px_-3px_6px_0px_inset_rgba(255,255,255,0.85)] flex items-center justify-between group-hover:shadow-[2px_2px_5px_0px_inset_rgba(0,0,0,0.07),-2px_-2px_5px_0px_inset_rgba(255,255,255,0.85)] transition-all">
+                      <span class="text-sm text-[#4a5565]">View Details</span><svg class="size-4" fill="none"
+                        viewBox="0 0 20 20">
+                        <path d="M4.143 9.943H15.744M15.744 9.943L10.963 5.162M15.744 9.943L10.963 14.724"
+                          stroke="#4A5565" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.657"></path>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                </div>
+
+                <!-- ===== Overlay (same for all) ===== -->
+                <div x-show="openCard" @click="openCard = null"
+                  class="fixed inset-0 bg-black/20 z-40 transition-opacity duration-300" x-transition.opacity></div>
+
+                <!-- ===== Sidebar 1 ===== -->
+                <div x-show="openCard === 'language'" x-transition:enter="transition ease-out duration-300"
+                  x-transition:enter-start="translate-x-full opacity-0"
+                  x-transition:enter-end="translate-x-0 opacity-100"
+                  x-transition:leave="transition ease-in duration-200"
+                  x-transition:leave-start="translate-x-0 opacity-100"
+                  x-transition:leave-end="translate-x-full opacity-0"
+                  class="fixed right-0 top-0 bottom-0 w-full max-w-2xl bg-[#f0f4f8] z-50 shadow-[-8px_0_24px_0_rgba(0,0,0,0.1)] animate-slide-in-right overflow-y-auto">
+                  <div class="h-full flex flex-col">
+                    <div class="sticky top-0 bg-[#f0f4f8] border-b border-gray-200/60 z-10"
+                      style="box-shadow: rgba(0, 0, 0, 0.03) 0px 1px 8px;">
+                      <div class="p-6 flex items-start justify-between">
+                        <div class="flex-1">
+                          <div class="flex items-center gap-3 mb-2">
+                            <div
+                              class="bg-emerald-50 size-10 rounded-xl flex items-center justify-center shadow-[2px_2px_6px_0px_inset_rgba(0,0,0,0.06),-2px_-2px_6px_0px_inset_rgba(255,255,255,0.5)]">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="lucide lucide-circle-check size-5 text-emerald-600">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="m9 12 2 2 4-4"></path>
+                              </svg></div>
+                            <h2 class="text-xl text-[#101828]">Language &amp; Wordcount Check</h2>
+                          </div>
+                          <p class="text-sm text-[#6a7282]">9,033 words detected in English with proper academic
+                            structure</p>
+                        </div><button @click="openCard = null"
+                          class="size-9 rounded-xl bg-[#f0f4f8] text-gray-500 hover:text-red-500 transition flex items-center justify-center shadow-[2px_2px_6px_0px_rgba(0,0,0,0.05),-2px_-2px_6px_0px_rgba(255,255,255,0.85)] hover:translate-y-[-1px] transition-all ml-4">
+                          X
+                        </button>
+                      </div>
+                    </div>
+                    <div class="flex-1 p-6 space-y-6">
+                      <div
+                        class="bg-[#f0f4f8] rounded-2xl shadow-[5px_5px_14px_0px_rgba(0,0,0,0.05),-5px_-5px_14px_0px_rgba(255,255,255,0.85)] p-6">
+                        <div class="flex items-center justify-between mb-4">
+                          <h3 class="text-base text-[#101828]">Overall Status</h3>
+                          <div
+                            class="bg-emerald-50 px-3 py-1.5 rounded-lg shadow-[1px_1px_3px_0px_inset_rgba(0,0,0,0.05)]">
+                            <span class="text-sm text-emerald-600">Passed</span></div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                          <div
+                            class="bg-emerald-50 size-20 rounded-2xl flex items-center justify-center shadow-[3px_3px_8px_0px_inset_rgba(0,0,0,0.06),-3px_-3px_8px_0px_inset_rgba(255,255,255,0.5)]">
+                            <span class="text-2xl text-emerald-600">95%</span></div>
+                          <div class="flex-1">
+                            <p class="text-sm text-[#4a5565] leading-relaxed">9,033 words detected in English with
+                              proper academic structure</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div>
+                        <h3 class="text-base text-[#101828] mb-3">Key Metrics</h3>
+                        <div class="grid grid-cols-2 gap-3">
+                          <div
+                            class="bg-[#f0f4f8] rounded-xl shadow-[3px_3px_8px_0px_inset_rgba(0,0,0,0.05),-3px_-3px_8px_0px_inset_rgba(255,255,255,0.85)] p-4">
+                            <p class="text-xs text-[#6a7282] mb-1 uppercase tracking-wide">Total Words</p>
+                            <p class="text-lg text-emerald-600">9,033</p>
+                          </div>
+                          <div
+                            class="bg-[#f0f4f8] rounded-xl shadow-[3px_3px_8px_0px_inset_rgba(0,0,0,0.05),-3px_-3px_8px_0px_inset_rgba(255,255,255,0.85)] p-4">
+                            <p class="text-xs text-[#6a7282] mb-1 uppercase tracking-wide">Avg Sentence Length</p>
+                            <p class="text-lg text-emerald-600">24.5 words</p>
+                          </div>
+                          <div
+                            class="bg-[#f0f4f8] rounded-xl shadow-[3px_3px_8px_0px_inset_rgba(0,0,0,0.05),-3px_-3px_8px_0px_inset_rgba(255,255,255,0.85)] p-4">
+                            <p class="text-xs text-[#6a7282] mb-1 uppercase tracking-wide">Readability Score</p>
+                            <p class="text-lg text-emerald-600">68/100</p>
+                          </div>
+                          <div
+                            class="bg-[#f0f4f8] rounded-xl shadow-[3px_3px_8px_0px_inset_rgba(0,0,0,0.05),-3px_-3px_8px_0px_inset_rgba(255,255,255,0.85)] p-4">
+                            <p class="text-xs text-[#6a7282] mb-1 uppercase tracking-wide">Grammatical Issues</p>
+                            <p class="text-lg text-amber-600">3 minor</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div>
+                        <h3 class="text-base text-[#101828] mb-3">Detailed Insights</h3>
+                        <div class="space-y-3">
+                          <div
+                            class="bg-[#f0f4f8] rounded-xl shadow-[3px_3px_8px_0px_rgba(0,0,0,0.04),-3px_-3px_8px_0px_rgba(255,255,255,0.85)] p-4 border-l-4 border-emerald-200">
+                            <div class="flex items-start gap-3">
+                              <div
+                                class="bg-emerald-50 size-8 rounded-lg flex items-center justify-center flex-shrink-0 shadow-[2px_2px_4px_0px_inset_rgba(0,0,0,0.05)]">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                  stroke-linejoin="round" class="lucide lucide-circle-check size-4 text-emerald-600">
+                                  <circle cx="12" cy="12" r="10"></circle>
+                                  <path d="m9 12 2 2 4-4"></path>
+                                </svg></div>
+                              <div class="flex-1">
+                                <h4 class="text-sm text-[#101828] mb-1">Word Count Analysis</h4>
+                                <p class="text-sm text-[#4a5565] leading-relaxed">Document meets journal requirements
+                                  (8,000-12,000 words)</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div
+                            class="bg-[#f0f4f8] rounded-xl shadow-[3px_3px_8px_0px_rgba(0,0,0,0.04),-3px_-3px_8px_0px_rgba(255,255,255,0.85)] p-4 border-l-4 border-emerald-200">
+                            <div class="flex items-start gap-3">
+                              <div
+                                class="bg-emerald-50 size-8 rounded-lg flex items-center justify-center flex-shrink-0 shadow-[2px_2px_4px_0px_inset_rgba(0,0,0,0.05)]">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                  stroke-linejoin="round" class="lucide lucide-circle-check size-4 text-emerald-600">
+                                  <circle cx="12" cy="12" r="10"></circle>
+                                  <path d="m9 12 2 2 4-4"></path>
+                                </svg></div>
+                              <div class="flex-1">
+                                <h4 class="text-sm text-[#101828] mb-1">Language Detection</h4>
+                                <p class="text-sm text-[#4a5565] leading-relaxed">English (US) detected with 99.8%
+                                  confidence</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div
+                            class="bg-[#f0f4f8] rounded-xl shadow-[3px_3px_8px_0px_rgba(0,0,0,0.04),-3px_-3px_8px_0px_rgba(255,255,255,0.85)] p-4 border-l-4 border-amber-200">
+                            <div class="flex items-start gap-3">
+                              <div
+                                class="bg-amber-50 size-8 rounded-lg flex items-center justify-center flex-shrink-0 shadow-[2px_2px_4px_0px_inset_rgba(0,0,0,0.05)]">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                  stroke-linejoin="round" class="lucide lucide-triangle-alert size-4 text-amber-600">
+                                  <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3">
+                                  </path>
+                                  <path d="M12 9v4"></path>
+                                  <path d="M12 17h.01"></path>
+                                </svg></div>
+                              <div class="flex-1">
+                                <h4 class="text-sm text-[#101828] mb-1">Grammar Check</h4>
+                                <p class="text-sm text-[#4a5565] leading-relaxed">3 minor punctuation inconsistencies
+                                  detected in reference section</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="bg-gradient-to-br from-[rgba(27,125,203,0.03)] to-[rgba(56,182,255,0.05)] rounded-2xl shadow-[3px_3px_8px_0px_rgba(0,0,0,0.04),-3px_-3px_8px_0px_rgba(255,255,255,0.85)] p-5 border border-[#1B7DCB]/10">
+                        <div class="flex items-start gap-3">
+                          <div
+                            class="bg-gradient-to-br from-[#1B7DCB] to-[#38B6FF] size-10 rounded-xl flex items-center justify-center shadow-sm flex-shrink-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round" class="lucide lucide-trending-up size-5 text-white">
+                              <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
+                              <polyline points="16 7 22 7 22 13"></polyline>
+                            </svg></div>
+                          <div>
+                            <h4 class="text-sm text-[#101828] mb-1">AI Recommendation</h4>
+                            <p class="text-sm text-[#4a5565] leading-relaxed">This manuscript meets all quality
+                              standards for this check. No action required.</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="sticky bottom-0 bg-[#f0f4f8] border-t border-gray-200/60 p-6"
+                      style="box-shadow: rgba(0, 0, 0, 0.03) 0px -1px 8px;">
+                      <div class="flex gap-3"><button
+                          class="flex-1 bg-[#f0f4f8] rounded-xl px-4 h-11 shadow-[3px_3px_8px_0px_rgba(0,0,0,0.06),-3px_-3px_8px_0px_rgba(255,255,255,0.85)] text-[#364153] text-sm flex items-center justify-center gap-2 hover:translate-y-[-1px] transition-all"><svg
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-download size-4">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" x2="12" y1="15" y2="3"></line>
+                          </svg>Download Full Report</button><button
+                          class="flex-1 bg-gradient-to-r from-[#1B7DCB] to-[#38B6FF] rounded-xl px-4 h-11 shadow-[5px_5px_14px_0px_rgba(27,125,203,0.2),-2px_-2px_8px_0px_rgba(255,255,255,0.4)] text-white text-sm flex items-center justify-center gap-2 hover:translate-y-[-1px] transition-all"><svg
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-book-open size-4">
+                            <path d="M12 7v14"></path>
+                            <path
+                              d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z">
+                            </path>
+                          </svg>View Manuscript Context</button></div>
+                    </div>
+                  </div>
+                </div>
+
+               <!-- ===== Sidebar 2 ===== -->
+                <div x-show="openCard === 'Suspicious'" x-transition:enter="transition ease-out duration-300"
+                  x-transition:enter-start="translate-x-full opacity-0"
+                  x-transition:enter-end="translate-x-0 opacity-100"
+                  x-transition:leave="transition ease-in duration-200"
+                  x-transition:leave-start="translate-x-0 opacity-100"
+                  x-transition:leave-end="translate-x-full opacity-0"
+                  class="fixed right-0 top-0 bottom-0 w-full max-w-2xl bg-[#f0f4f8] z-50 shadow-[-8px_0_24px_0_rgba(0,0,0,0.1)] animate-slide-in-right overflow-y-auto">
+                  <div class="h-full flex flex-col">
+                    <div class="sticky top-0 bg-[#f0f4f8] border-b border-gray-200/60 z-10"
+                      style="box-shadow: rgba(0, 0, 0, 0.03) 0px 1px 8px;">
+                      <div class="p-6 flex items-start justify-between">
+                        <div class="flex-1">
+                          <div class="flex items-center gap-3 mb-2">
+                            <div
+                              class="bg-emerald-50 size-10 rounded-xl flex items-center justify-center shadow-[2px_2px_6px_0px_inset_rgba(0,0,0,0.06),-2px_-2px_6px_0px_inset_rgba(255,255,255,0.5)]">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="lucide lucide-circle-check size-5 text-emerald-600">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="m9 12 2 2 4-4"></path>
+                              </svg></div>
+                            <h2 class="text-xl text-[#101828]">Language &amp; Wordcount Check</h2>
+                          </div>
+                          <p class="text-sm text-[#6a7282]">9,033 words detected in English with proper academic
+                            structure</p>
+                        </div><button @click="openCard = null"
+                          class="size-9 rounded-xl bg-[#f0f4f8] text-gray-500 hover:text-red-500 transition flex items-center justify-center shadow-[2px_2px_6px_0px_rgba(0,0,0,0.05),-2px_-2px_6px_0px_rgba(255,255,255,0.85)] hover:translate-y-[-1px] transition-all ml-4">
+                          X
+                        </button>
+                      </div>
+                    </div>
+                    <div class="flex-1 p-6 space-y-6">
+                      <div
+                        class="bg-[#f0f4f8] rounded-2xl shadow-[5px_5px_14px_0px_rgba(0,0,0,0.05),-5px_-5px_14px_0px_rgba(255,255,255,0.85)] p-6">
+                        <div class="flex items-center justify-between mb-4">
+                          <h3 class="text-base text-[#101828]">Overall Status</h3>
+                          <div
+                            class="bg-emerald-50 px-3 py-1.5 rounded-lg shadow-[1px_1px_3px_0px_inset_rgba(0,0,0,0.05)]">
+                            <span class="text-sm text-emerald-600">Passed</span></div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                          <div
+                            class="bg-emerald-50 size-20 rounded-2xl flex items-center justify-center shadow-[3px_3px_8px_0px_inset_rgba(0,0,0,0.06),-3px_-3px_8px_0px_inset_rgba(255,255,255,0.5)]">
+                            <span class="text-2xl text-emerald-600">95%</span></div>
+                          <div class="flex-1">
+                            <p class="text-sm text-[#4a5565] leading-relaxed">9,033 words detected in English with
+                              proper academic structure</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div>
+                        <h3 class="text-base text-[#101828] mb-3">Key Metrics</h3>
+                        <div class="grid grid-cols-2 gap-3">
+                          <div
+                            class="bg-[#f0f4f8] rounded-xl shadow-[3px_3px_8px_0px_inset_rgba(0,0,0,0.05),-3px_-3px_8px_0px_inset_rgba(255,255,255,0.85)] p-4">
+                            <p class="text-xs text-[#6a7282] mb-1 uppercase tracking-wide">Total Words</p>
+                            <p class="text-lg text-emerald-600">9,033</p>
+                          </div>
+                          <div
+                            class="bg-[#f0f4f8] rounded-xl shadow-[3px_3px_8px_0px_inset_rgba(0,0,0,0.05),-3px_-3px_8px_0px_inset_rgba(255,255,255,0.85)] p-4">
+                            <p class="text-xs text-[#6a7282] mb-1 uppercase tracking-wide">Avg Sentence Length</p>
+                            <p class="text-lg text-emerald-600">24.5 words</p>
+                          </div>
+                          <div
+                            class="bg-[#f0f4f8] rounded-xl shadow-[3px_3px_8px_0px_inset_rgba(0,0,0,0.05),-3px_-3px_8px_0px_inset_rgba(255,255,255,0.85)] p-4">
+                            <p class="text-xs text-[#6a7282] mb-1 uppercase tracking-wide">Readability Score</p>
+                            <p class="text-lg text-emerald-600">68/100</p>
+                          </div>
+                          <div
+                            class="bg-[#f0f4f8] rounded-xl shadow-[3px_3px_8px_0px_inset_rgba(0,0,0,0.05),-3px_-3px_8px_0px_inset_rgba(255,255,255,0.85)] p-4">
+                            <p class="text-xs text-[#6a7282] mb-1 uppercase tracking-wide">Grammatical Issues</p>
+                            <p class="text-lg text-amber-600">3 minor</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div>
+                        <h3 class="text-base text-[#101828] mb-3">Detailed Insights</h3>
+                        <div class="space-y-3">
+                          <div
+                            class="bg-[#f0f4f8] rounded-xl shadow-[3px_3px_8px_0px_rgba(0,0,0,0.04),-3px_-3px_8px_0px_rgba(255,255,255,0.85)] p-4 border-l-4 border-emerald-200">
+                            <div class="flex items-start gap-3">
+                              <div
+                                class="bg-emerald-50 size-8 rounded-lg flex items-center justify-center flex-shrink-0 shadow-[2px_2px_4px_0px_inset_rgba(0,0,0,0.05)]">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                  stroke-linejoin="round" class="lucide lucide-circle-check size-4 text-emerald-600">
+                                  <circle cx="12" cy="12" r="10"></circle>
+                                  <path d="m9 12 2 2 4-4"></path>
+                                </svg></div>
+                              <div class="flex-1">
+                                <h4 class="text-sm text-[#101828] mb-1">Word Count Analysis</h4>
+                                <p class="text-sm text-[#4a5565] leading-relaxed">Document meets journal requirements
+                                  (8,000-12,000 words)</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div
+                            class="bg-[#f0f4f8] rounded-xl shadow-[3px_3px_8px_0px_rgba(0,0,0,0.04),-3px_-3px_8px_0px_rgba(255,255,255,0.85)] p-4 border-l-4 border-emerald-200">
+                            <div class="flex items-start gap-3">
+                              <div
+                                class="bg-emerald-50 size-8 rounded-lg flex items-center justify-center flex-shrink-0 shadow-[2px_2px_4px_0px_inset_rgba(0,0,0,0.05)]">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                  stroke-linejoin="round" class="lucide lucide-circle-check size-4 text-emerald-600">
+                                  <circle cx="12" cy="12" r="10"></circle>
+                                  <path d="m9 12 2 2 4-4"></path>
+                                </svg></div>
+                              <div class="flex-1">
+                                <h4 class="text-sm text-[#101828] mb-1">Language Detection</h4>
+                                <p class="text-sm text-[#4a5565] leading-relaxed">English (US) detected with 99.8%
+                                  confidence</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div
+                            class="bg-[#f0f4f8] rounded-xl shadow-[3px_3px_8px_0px_rgba(0,0,0,0.04),-3px_-3px_8px_0px_rgba(255,255,255,0.85)] p-4 border-l-4 border-amber-200">
+                            <div class="flex items-start gap-3">
+                              <div
+                                class="bg-amber-50 size-8 rounded-lg flex items-center justify-center flex-shrink-0 shadow-[2px_2px_4px_0px_inset_rgba(0,0,0,0.05)]">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                  stroke-linejoin="round" class="lucide lucide-triangle-alert size-4 text-amber-600">
+                                  <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3">
+                                  </path>
+                                  <path d="M12 9v4"></path>
+                                  <path d="M12 17h.01"></path>
+                                </svg></div>
+                              <div class="flex-1">
+                                <h4 class="text-sm text-[#101828] mb-1">Grammar Check</h4>
+                                <p class="text-sm text-[#4a5565] leading-relaxed">3 minor punctuation inconsistencies
+                                  detected in reference section</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="bg-gradient-to-br from-[rgba(27,125,203,0.03)] to-[rgba(56,182,255,0.05)] rounded-2xl shadow-[3px_3px_8px_0px_rgba(0,0,0,0.04),-3px_-3px_8px_0px_rgba(255,255,255,0.85)] p-5 border border-[#1B7DCB]/10">
+                        <div class="flex items-start gap-3">
+                          <div
+                            class="bg-gradient-to-br from-[#1B7DCB] to-[#38B6FF] size-10 rounded-xl flex items-center justify-center shadow-sm flex-shrink-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round" class="lucide lucide-trending-up size-5 text-white">
+                              <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
+                              <polyline points="16 7 22 7 22 13"></polyline>
+                            </svg></div>
+                          <div>
+                            <h4 class="text-sm text-[#101828] mb-1">AI Recommendation</h4>
+                            <p class="text-sm text-[#4a5565] leading-relaxed">This manuscript meets all quality
+                              standards for this check. No action required.</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="sticky bottom-0 bg-[#f0f4f8] border-t border-gray-200/60 p-6"
+                      style="box-shadow: rgba(0, 0, 0, 0.03) 0px -1px 8px;">
+                      <div class="flex gap-3"><button
+                          class="flex-1 bg-[#f0f4f8] rounded-xl px-4 h-11 shadow-[3px_3px_8px_0px_rgba(0,0,0,0.06),-3px_-3px_8px_0px_rgba(255,255,255,0.85)] text-[#364153] text-sm flex items-center justify-center gap-2 hover:translate-y-[-1px] transition-all"><svg
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-download size-4">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" x2="12" y1="15" y2="3"></line>
+                          </svg>Download Full Report</button><button
+                          class="flex-1 bg-gradient-to-r from-[#1B7DCB] to-[#38B6FF] rounded-xl px-4 h-11 shadow-[5px_5px_14px_0px_rgba(27,125,203,0.2),-2px_-2px_8px_0px_rgba(255,255,255,0.4)] text-white text-sm flex items-center justify-center gap-2 hover:translate-y-[-1px] transition-all"><svg
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-book-open size-4">
+                            <path d="M12 7v14"></path>
+                            <path
+                              d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z">
+                            </path>
+                          </svg>View Manuscript Context</button></div>
+                    </div>
+                  </div>
+                </div>
+
+                  <!-- ===== Sidebar 3 ===== -->
+                <div x-show="openCard === 'ithenticate'" x-transition:enter="transition ease-out duration-300"
+                  x-transition:enter-start="translate-x-full opacity-0"
+                  x-transition:enter-end="translate-x-0 opacity-100"
+                  x-transition:leave="transition ease-in duration-200"
+                  x-transition:leave-start="translate-x-0 opacity-100"
+                  x-transition:leave-end="translate-x-full opacity-0"
+                  class="fixed right-0 top-0 bottom-0 w-full max-w-2xl bg-[#f0f4f8] z-50 shadow-[-8px_0_24px_0_rgba(0,0,0,0.1)] animate-slide-in-right overflow-y-auto">
+                  <div class="h-full flex flex-col">
+                    <div class="sticky top-0 bg-[#f0f4f8] border-b border-gray-200/60 z-10"
+                      style="box-shadow: rgba(0, 0, 0, 0.03) 0px 1px 8px;">
+                      <div class="p-6 flex items-start justify-between">
+                        <div class="flex-1">
+                          <div class="flex items-center gap-3 mb-2">
+                            <div
+                              class="bg-emerald-50 size-10 rounded-xl flex items-center justify-center shadow-[2px_2px_6px_0px_inset_rgba(0,0,0,0.06),-2px_-2px_6px_0px_inset_rgba(255,255,255,0.5)]">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="lucide lucide-circle-check size-5 text-emerald-600">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="m9 12 2 2 4-4"></path>
+                              </svg></div>
+                            <h2 class="text-xl text-[#101828]">Language &amp; Wordcount Check</h2>
+                          </div>
+                          <p class="text-sm text-[#6a7282]">9,033 words detected in English with proper academic
+                            structure</p>
+                        </div><button @click="openCard = null"
+                          class="size-9 rounded-xl bg-[#f0f4f8] text-gray-500 hover:text-red-500 transition flex items-center justify-center shadow-[2px_2px_6px_0px_rgba(0,0,0,0.05),-2px_-2px_6px_0px_rgba(255,255,255,0.85)] hover:translate-y-[-1px] transition-all ml-4">
+                          X
+                        </button>
+                      </div>
+                    </div>
+                    <div class="flex-1 p-6 space-y-6">
+                      <div
+                        class="bg-[#f0f4f8] rounded-2xl shadow-[5px_5px_14px_0px_rgba(0,0,0,0.05),-5px_-5px_14px_0px_rgba(255,255,255,0.85)] p-6">
+                        <div class="flex items-center justify-between mb-4">
+                          <h3 class="text-base text-[#101828]">Overall Status</h3>
+                          <div
+                            class="bg-emerald-50 px-3 py-1.5 rounded-lg shadow-[1px_1px_3px_0px_inset_rgba(0,0,0,0.05)]">
+                            <span class="text-sm text-emerald-600">Passed</span></div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                          <div
+                            class="bg-emerald-50 size-20 rounded-2xl flex items-center justify-center shadow-[3px_3px_8px_0px_inset_rgba(0,0,0,0.06),-3px_-3px_8px_0px_inset_rgba(255,255,255,0.5)]">
+                            <span class="text-2xl text-emerald-600">95%</span></div>
+                          <div class="flex-1">
+                            <p class="text-sm text-[#4a5565] leading-relaxed">9,033 words detected in English with
+                              proper academic structure</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div>
+                        <h3 class="text-base text-[#101828] mb-3">Key Metrics</h3>
+                        <div class="grid grid-cols-2 gap-3">
+                          <div
+                            class="bg-[#f0f4f8] rounded-xl shadow-[3px_3px_8px_0px_inset_rgba(0,0,0,0.05),-3px_-3px_8px_0px_inset_rgba(255,255,255,0.85)] p-4">
+                            <p class="text-xs text-[#6a7282] mb-1 uppercase tracking-wide">Total Words</p>
+                            <p class="text-lg text-emerald-600">9,033</p>
+                          </div>
+                          <div
+                            class="bg-[#f0f4f8] rounded-xl shadow-[3px_3px_8px_0px_inset_rgba(0,0,0,0.05),-3px_-3px_8px_0px_inset_rgba(255,255,255,0.85)] p-4">
+                            <p class="text-xs text-[#6a7282] mb-1 uppercase tracking-wide">Avg Sentence Length</p>
+                            <p class="text-lg text-emerald-600">24.5 words</p>
+                          </div>
+                          <div
+                            class="bg-[#f0f4f8] rounded-xl shadow-[3px_3px_8px_0px_inset_rgba(0,0,0,0.05),-3px_-3px_8px_0px_inset_rgba(255,255,255,0.85)] p-4">
+                            <p class="text-xs text-[#6a7282] mb-1 uppercase tracking-wide">Readability Score</p>
+                            <p class="text-lg text-emerald-600">68/100</p>
+                          </div>
+                          <div
+                            class="bg-[#f0f4f8] rounded-xl shadow-[3px_3px_8px_0px_inset_rgba(0,0,0,0.05),-3px_-3px_8px_0px_inset_rgba(255,255,255,0.85)] p-4">
+                            <p class="text-xs text-[#6a7282] mb-1 uppercase tracking-wide">Grammatical Issues</p>
+                            <p class="text-lg text-amber-600">3 minor</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div>
+                        <h3 class="text-base text-[#101828] mb-3">Detailed Insights</h3>
+                        <div class="space-y-3">
+                          <div
+                            class="bg-[#f0f4f8] rounded-xl shadow-[3px_3px_8px_0px_rgba(0,0,0,0.04),-3px_-3px_8px_0px_rgba(255,255,255,0.85)] p-4 border-l-4 border-emerald-200">
+                            <div class="flex items-start gap-3">
+                              <div
+                                class="bg-emerald-50 size-8 rounded-lg flex items-center justify-center flex-shrink-0 shadow-[2px_2px_4px_0px_inset_rgba(0,0,0,0.05)]">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                  stroke-linejoin="round" class="lucide lucide-circle-check size-4 text-emerald-600">
+                                  <circle cx="12" cy="12" r="10"></circle>
+                                  <path d="m9 12 2 2 4-4"></path>
+                                </svg></div>
+                              <div class="flex-1">
+                                <h4 class="text-sm text-[#101828] mb-1">Word Count Analysis</h4>
+                                <p class="text-sm text-[#4a5565] leading-relaxed">Document meets journal requirements
+                                  (8,000-12,000 words)</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div
+                            class="bg-[#f0f4f8] rounded-xl shadow-[3px_3px_8px_0px_rgba(0,0,0,0.04),-3px_-3px_8px_0px_rgba(255,255,255,0.85)] p-4 border-l-4 border-emerald-200">
+                            <div class="flex items-start gap-3">
+                              <div
+                                class="bg-emerald-50 size-8 rounded-lg flex items-center justify-center flex-shrink-0 shadow-[2px_2px_4px_0px_inset_rgba(0,0,0,0.05)]">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                  stroke-linejoin="round" class="lucide lucide-circle-check size-4 text-emerald-600">
+                                  <circle cx="12" cy="12" r="10"></circle>
+                                  <path d="m9 12 2 2 4-4"></path>
+                                </svg></div>
+                              <div class="flex-1">
+                                <h4 class="text-sm text-[#101828] mb-1">Language Detection</h4>
+                                <p class="text-sm text-[#4a5565] leading-relaxed">English (US) detected with 99.8%
+                                  confidence</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div
+                            class="bg-[#f0f4f8] rounded-xl shadow-[3px_3px_8px_0px_rgba(0,0,0,0.04),-3px_-3px_8px_0px_rgba(255,255,255,0.85)] p-4 border-l-4 border-amber-200">
+                            <div class="flex items-start gap-3">
+                              <div
+                                class="bg-amber-50 size-8 rounded-lg flex items-center justify-center flex-shrink-0 shadow-[2px_2px_4px_0px_inset_rgba(0,0,0,0.05)]">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                  stroke-linejoin="round" class="lucide lucide-triangle-alert size-4 text-amber-600">
+                                  <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3">
+                                  </path>
+                                  <path d="M12 9v4"></path>
+                                  <path d="M12 17h.01"></path>
+                                </svg></div>
+                              <div class="flex-1">
+                                <h4 class="text-sm text-[#101828] mb-1">Grammar Check</h4>
+                                <p class="text-sm text-[#4a5565] leading-relaxed">3 minor punctuation inconsistencies
+                                  detected in reference section</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="bg-gradient-to-br from-[rgba(27,125,203,0.03)] to-[rgba(56,182,255,0.05)] rounded-2xl shadow-[3px_3px_8px_0px_rgba(0,0,0,0.04),-3px_-3px_8px_0px_rgba(255,255,255,0.85)] p-5 border border-[#1B7DCB]/10">
+                        <div class="flex items-start gap-3">
+                          <div
+                            class="bg-gradient-to-br from-[#1B7DCB] to-[#38B6FF] size-10 rounded-xl flex items-center justify-center shadow-sm flex-shrink-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round" class="lucide lucide-trending-up size-5 text-white">
+                              <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
+                              <polyline points="16 7 22 7 22 13"></polyline>
+                            </svg></div>
+                          <div>
+                            <h4 class="text-sm text-[#101828] mb-1">AI Recommendation</h4>
+                            <p class="text-sm text-[#4a5565] leading-relaxed">This manuscript meets all quality
+                              standards for this check. No action required.</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="sticky bottom-0 bg-[#f0f4f8] border-t border-gray-200/60 p-6"
+                      style="box-shadow: rgba(0, 0, 0, 0.03) 0px -1px 8px;">
+                      <div class="flex gap-3"><button
+                          class="flex-1 bg-[#f0f4f8] rounded-xl px-4 h-11 shadow-[3px_3px_8px_0px_rgba(0,0,0,0.06),-3px_-3px_8px_0px_rgba(255,255,255,0.85)] text-[#364153] text-sm flex items-center justify-center gap-2 hover:translate-y-[-1px] transition-all"><svg
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-download size-4">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" x2="12" y1="15" y2="3"></line>
+                          </svg>Download Full Report</button><button
+                          class="flex-1 bg-gradient-to-r from-[#1B7DCB] to-[#38B6FF] rounded-xl px-4 h-11 shadow-[5px_5px_14px_0px_rgba(27,125,203,0.2),-2px_-2px_8px_0px_rgba(255,255,255,0.4)] text-white text-sm flex items-center justify-center gap-2 hover:translate-y-[-1px] transition-all"><svg
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-book-open size-4">
+                            <path d="M12 7v14"></path>
+                            <path
+                              d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z">
+                            </path>
+                          </svg>View Manuscript Context</button></div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+
+
+
+
+              
+            </div>
+          </div>
+        </div>
+        </mani>
+    </div>
+  </div>
+</body>
+
+<script>
+  function setActiveButton(button) {
+    // Remove 'active' from all buttons in this group
+    document.querySelectorAll('.action-btn').forEach(btn => {
+      btn.classList.remove('active');
+      btn.classList.add('inactive');
+    });
+
+    // Add 'active' to the clicked button
+    button.classList.add('active');
+    button.classList.remove('inactive');
+  }
+</script>
+
+</html>

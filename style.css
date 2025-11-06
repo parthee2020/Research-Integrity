@@ -1,0 +1,37 @@
+.active-tab {
+    background: linear-gradient(135deg, rgb(27, 125, 203) 0%, rgb(56, 182, 255) 100%) !important;
+    box-shadow: rgba(27, 125, 203, 0.3) 2px 2px 6px, rgba(255, 255, 255, 0.5) -1px -1px 4px;
+    font-family: Inter, sans-serif;
+    font-weight: 600;
+}
+
+  .inactive-tab {
+    background: white;
+    color: #4b5563; /* gray-600 */
+    border: 1px solid #f3f4f6; /* gray-100 */
+    box-shadow: rgba(0, 0, 0, 0.06) 3px 3px 7px,
+                rgba(255, 255, 255, 0.9) -3px -3px 7px;
+    font-family: Inter, sans-serif;
+    font-weight: 500;
+  }
+
+  .inactive-tab:hover {
+    color: #111827; /* gray-900 */
+  }
+.inactive{
+  box-shadow:rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 2px 2px 6px 0px, rgba(255, 255, 255, 0.85) -2px -2px 6px 0px;
+}
+.active{
+background-image:linear-gradient(to right in oklab, rgb(27, 125, 203) 0%, rgb(56, 182, 255) 100%);
+color: #ffffff;
+}
+select option {
+  background-color: #F7F9FB;   /* light background */
+  color: #1e293b;              /* text color */
+  font-size: 14px;
+}
+
+/* Optional: change hover color (works only in Firefox) */
+select option:hover {
+  background-color: #E0F2FE;
+}
